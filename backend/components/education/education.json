@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_education_educations",
+  "info": {
+    "name": "education",
+    "icon": "book"
+  },
+  "options": {},
+  "attributes": {
+    "degreeName": {
+      "type": "string",
+      "required": true
+    },
+    "college": {
+      "type": "string",
+      "required": true
+    },
+    "marks": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

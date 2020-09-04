@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "skills",
+  "info": {
+    "name": "skill"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "Title": {
+      "type": "string",
+      "required": true
+    },
+    "skill_tagline": {
+      "type": "string",
+      "required": true
+    },
+    "skill": {
+      "type": "component",
+      "repeatable": true,
+      "component": "skill.skill",
+      "required": true
+    }
+  }
+}

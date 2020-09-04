@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "introductions",
+  "info": {
+    "name": "introduction"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "richtext"
+    }
+  }
+}

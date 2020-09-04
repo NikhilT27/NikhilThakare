@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "processes",
+  "info": {
+    "name": "Process"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "life_event": {
+      "type": "component",
+      "repeatable": true,
+      "component": "life-events.life-events"
+    }
+  }
+}

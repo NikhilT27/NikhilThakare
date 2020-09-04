@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mystories",
+  "info": {
+    "name": "mystory"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "story": {
+      "type": "component",
+      "repeatable": true,
+      "component": "story.story",
+      "required": true
+    }
+  }
+}

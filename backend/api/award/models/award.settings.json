@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "awards",
+  "info": {
+    "name": "award"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "desciption": {
+      "type": "string",
+      "required": true
+    },
+    "award": {
+      "type": "component",
+      "repeatable": true,
+      "component": "award.award"
+    }
+  }
+}
