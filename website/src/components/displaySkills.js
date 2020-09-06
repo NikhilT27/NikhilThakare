@@ -4,19 +4,28 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import ReactMarkdown from "react-markdown"
 
 import Image from "../components/image"
-import { Button, Grid, Paper, Typography } from "@material-ui/core"
+import {
+  Button,
+  Grid,
+  Paper,
+  Typography,
+  Card,
+  CardContent,
+} from "@material-ui/core"
+import Rating from "@material-ui/lab/Rating"
 import { makeStyles } from "@material-ui/core/styles"
+
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1,
-    backgroundColor: "#C2D2C1",
-    paddingTop: 100,
-    margin: -32,
+    margin: 0,
+    padding: 0,
+    backgroundColor: "yellow",
   },
 }))
 
 const DisplaySkills = () => {
   const classes = useStyles()
+
   const data = useStaticQuery(graphql`
     {
       strapiSkills {
@@ -32,46 +41,56 @@ const DisplaySkills = () => {
       }
     }
   `)
-
   return (
-    <>
-      <div className={classes.root}>
-        <Grid
-          container
-          xs="12"
-          direction="column"
-          justify="space-evenly"
-          alignItems="center"
-        >
-          <Grid item>
-            <Typography variant="h3">{data.strapiSkills.Title}</Typography>
-            <Typography variant="body">
-              {data.strapiSkills.skill_tagline}
-            </Typography>
+    <Paper elevation={0} className={classes.root} square>
+      <Grid container direction="column" justify="space-evenly" align="center">
+        <Grid item>
+          <Grid container direction="column">
+            <h1>{data.strapiSkills.Title}</h1>
+            <div>
+              <ReactMarkdown source={data.strapiSkills.skill_tagline} />
+            </div>
           </Grid>
-          <Grid container justify="space-evenly" spacing={2}>
+        </Grid>
+        <Grid item>
+          <Grid container justify="space-evenly" align="center">
             {data.strapiSkills.skill.map(item => {
               return (
-                <Grid item>
-                  <Paper
-                    style={{
-                      width: "300px",
-                      height: "200px",
-                      marginBottom: `1.45rem`,
-                    }}
-                  >
-                    <Typography>{item.title}</Typography>
-                    <Typography>{item.description}</Typography>
-                    <Typography>{item.experience}</Typography>
-                    <Typography>{item.title}</Typography>
-                  </Paper>
+                <Grid item xs={3} id={item.id}>
+                  <Card elevation={0}>
+                    <CardContent>
+                      <Typography variant="h5">{item.title}</Typography>
+                      <Typography
+                        variant="body2"
+                        color="textSecondary"
+                        component="p"
+                      >
+                        {item.description}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        color="textSecondary"
+                        component="p"
+                      >
+                        {item.experience}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        color="textSecondary"
+                        component="p"
+                      >
+                        Level
+                      </Typography>
+                      <Rating name="Level" value={item.level} readOnly />
+                    </CardContent>
+                  </Card>
                 </Grid>
               )
             })}
           </Grid>
         </Grid>
-      </div>
-    </>
+      </Grid>
+    </Paper>
   )
 }
 

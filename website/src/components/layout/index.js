@@ -9,9 +9,16 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import { Navbar } from "./components/Navbar"
-import { Container } from "@material-ui/core"
+import { Container, Box } from "@material-ui/core"
+import { makeStyles } from "@material-ui/core/styles"
+
+const useStyles = makeStyles(theme => ({
+  root: {},
+}))
 
 const Layout = ({ children }) => {
+  const classes = useStyles()
+
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -23,12 +30,10 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <>
+    <Box>
       <Navbar />
-      <Container maxWidth="xl">
-        <div>{children}</div>
-      </Container>
-    </>
+      <Box>{children}</Box>
+    </Box>
   )
 }
 

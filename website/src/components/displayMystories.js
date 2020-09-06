@@ -4,14 +4,21 @@ import Img from "gatsby-image"
 import ReactMarkdown from "react-markdown"
 
 import Image from "../components/image"
-import { Button, Grid, Paper, Typography } from "@material-ui/core"
+import {
+  Button,
+  Grid,
+  Paper,
+  Typography,
+  CardContent,
+  Card,
+} from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
+import Divider from "@material-ui/core/Divider"
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     backgroundColor: "#C2D2C1",
     paddingTop: 100,
-    margin: -32,
   },
 }))
 
@@ -38,40 +45,38 @@ const DisplayMystories = () => {
   `)
 
   return (
-    <>
-      <div className={classes.root}>
-        <Grid
-          container
-          xs="12"
-          direction="column"
-          justify="space-evenly"
-          alignItems="center"
-        >
-          <Grid item>
-            <Typography variant="h3">My Stories</Typography>
+    <Paper elevation={0} className={classes.root} square>
+      <Grid container direction="column" justify="space-evenly" align="center">
+        <Grid item>
+          <Grid container direction="column">
+            <Typography variant="h4">My story</Typography>
           </Grid>
-          <Grid container justify="space-evenly" spacing={2}>
+        </Grid>
+        <Grid item>
+          <Grid container justify="space-evenly" align="center">
             {data.strapiMystories.story.map(item => {
               return (
-                <Grid item>
-                  <Paper
-                    style={{
-                      width: "800px",
-                      marginBottom: `1.45rem`,
-                    }}
-                  >
-                    <Typography>{item.title}</Typography>
-                    <Img fluid={item.image.childImageSharp.fluid} />
-                    <Typography>{item.description}</Typography>
-                    <Typography>{item.date}</Typography>
-                  </Paper>
+                <Grid item xs={12} id={item.id}>
+                  <Card elevation={0}>
+                    <CardContent>
+                      <Typography variant="h5">{item.title}</Typography>
+                      <div>
+                        <ReactMarkdown
+                          source={item.description}
+                        ></ReactMarkdown>
+                      </div>
+                      <Typography>{item.date}</Typography>
+                      <Img fluid={item.image.childImageSharp.fluid} />
+                    </CardContent>
+                  </Card>
+                  <Divider />
                 </Grid>
               )
             })}
           </Grid>
         </Grid>
-      </div>
-    </>
+      </Grid>
+    </Paper>
   )
 }
 

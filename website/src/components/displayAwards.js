@@ -1,6 +1,6 @@
 import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
-
+import Img from "gatsby-image"
 import ReactMarkdown from "react-markdown"
 
 import Image from "./image"
@@ -11,24 +11,33 @@ import {
   Typography,
   Card,
   CardContent,
+  CardMedia,
 } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 const useStyles = makeStyles(theme => ({
-  root: {},
+  root: {
+    backgroundColor: "gold",
+  },
 }))
 
-const DisplayEducation = () => {
+const DisplayAwards = () => {
   const classes = useStyles()
   const data = useStaticQuery(graphql`
     {
-      strapiEducations {
-        Title
-        strapiId
-        education {
+      strapiAwards {
+        title
+        desciption
+        award {
           id
-          degreeName
-          college
-          marks
+          title
+          descrption
+          image {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
         }
       }
     }
@@ -39,26 +48,28 @@ const DisplayEducation = () => {
       <Grid container direction="column" justify="space-evenly" align="center">
         <Grid item>
           <Grid container direction="column">
-            <Typography variant="h4">{data.strapiEducations.Title}</Typography>
+            <Typography variant="h4">{data.strapiAwards.title}</Typography>
+            <Typography variant="body">
+              {data.strapiAwards.desciption}
+            </Typography>
           </Grid>
         </Grid>
         <Grid item>
           <Grid container justify="space-evenly" align="center">
-            {data.strapiEducations.education.map(item => {
+            {data.strapiAwards.award.map(item => {
               return (
                 <Grid item xs={3} id={item.id}>
                   <Card elevation={0}>
                     <CardContent>
-                      <Typography variant="h5">{item.degreeName}</Typography>
+                      <Typography variant="h5">{item.title}</Typography>
                       <Typography
                         variant="body"
                         color="textSecondary"
                         component="p"
                       >
-                        {item.college}
-
-                        {item.marks}
+                        {item.descrption}
                       </Typography>
+                      <Img fluid={item.image.childImageSharp.fluid} />
                     </CardContent>
                   </Card>
                 </Grid>
@@ -71,4 +82,4 @@ const DisplayEducation = () => {
   )
 }
 
-export default DisplayEducation
+export default DisplayAwards
