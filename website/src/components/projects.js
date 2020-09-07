@@ -3,7 +3,6 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import ReactMarkdown from "react-markdown"
 
-import Image from "./image"
 import {
   Button,
   Grid,
@@ -12,6 +11,8 @@ import {
   Card,
   CardContent,
   IconButton,
+  Box,
+  CardMedia,
 } from "@material-ui/core"
 
 import GitHubIcon from "@material-ui/icons/GitHub"
@@ -46,7 +47,7 @@ const Projects = () => {
   `)
 
   return (
-    <Paper elevation={0} className={classes.root} square>
+    <Paper elevation={4} className={classes.root} square>
       <Grid container direction="column" justify="space-evenly" align="center">
         <Grid item>
           <Grid container direction="column">
@@ -60,24 +61,28 @@ const Projects = () => {
           <Grid container justify="space-evenly" align="center">
             {data.strapiProjects.project.map(item => {
               return (
-                <Grid item xs={3} id={item.id}>
-                  <Card elevation={0}>
-                    <CardContent>
-                      <Typography variant="h5">{item.title}</Typography>
-                      <Typography
-                        variant="body"
-                        color="textSecondary"
-                        component="p"
-                      >
-                        {item.description}
-                      </Typography>
-                      <Img fluid={item.image.childImageSharp.fluid} />
-                      <IconButton target="_blank" href={item.github_link}>
-                        <GitHubIcon />
-                      </IconButton>
-                    </CardContent>
-                  </Card>
-                </Grid>
+                <Paper>
+                  <Grid item xs={12} id={item.id}>
+                    <Card elevation={0}>
+                      <CardContent>
+                        <Typography variant="h5">{item.title}</Typography>
+                        <Typography
+                          variant="body"
+                          color="textSecondary"
+                          component="p"
+                        >
+                          {item.description}
+                        </Typography>
+                        <CardMedia style={{ maxWidth: "100" }}>
+                          <Img fluid={item.image.childImageSharp.fluid} />
+                        </CardMedia>
+                        <IconButton target="_blank" href={item.github_link}>
+                          <GitHubIcon />
+                        </IconButton>
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                </Paper>
               )
             })}
           </Grid>

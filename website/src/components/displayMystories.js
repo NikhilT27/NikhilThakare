@@ -3,7 +3,6 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import ReactMarkdown from "react-markdown"
 
-import Image from "../components/image"
 import {
   Button,
   Grid,
@@ -11,6 +10,7 @@ import {
   Typography,
   CardContent,
   Card,
+  Box,
 } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 import Divider from "@material-ui/core/Divider"
@@ -19,6 +19,13 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     backgroundColor: "#C2D2C1",
     paddingTop: 100,
+  },
+  image: {
+    width: "400px",
+    marginBottom: `1.45rem`,
+    [theme.breakpoints.down("sm")]: {
+      width: "300px",
+    },
   },
 }))
 
@@ -56,21 +63,31 @@ const DisplayMystories = () => {
           <Grid container justify="space-evenly" align="center">
             {data.strapiMystories.story.map(item => {
               return (
-                <Grid item xs={12} id={item.id}>
-                  <Card elevation={0}>
-                    <CardContent>
-                      <Typography variant="h5">{item.title}</Typography>
-                      <div>
-                        <ReactMarkdown
-                          source={item.description}
-                        ></ReactMarkdown>
-                      </div>
-                      <Typography>{item.date}</Typography>
-                      <Img fluid={item.image.childImageSharp.fluid} />
-                    </CardContent>
-                  </Card>
-                  <Divider />
-                </Grid>
+                <Paper elevation={0} className={classes.root}>
+                  <Grid
+                    container
+                    justify="space-evenly"
+                    alignItems="center"
+                    xs="12"
+                    sm="auto"
+                  >
+                    <Grid item>
+                      <Grid container direction="column">
+                        <Typography variant="h4">{item.title}</Typography>
+                        <Typography variant="body">
+                          {item.description}
+                        </Typography>
+
+                        <Typography variant="body">{item.date}</Typography>
+                      </Grid>
+                    </Grid>
+                    <Grid item>
+                      <Box className={classes.image}>
+                        <Img fluid={item.image.childImageSharp.fluid} />
+                      </Box>
+                    </Grid>
+                  </Grid>
+                </Paper>
               )
             })}
           </Grid>

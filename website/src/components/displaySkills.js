@@ -3,7 +3,6 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 
 import ReactMarkdown from "react-markdown"
 
-import Image from "../components/image"
 import {
   Button,
   Grid,
@@ -13,13 +12,30 @@ import {
   CardContent,
 } from "@material-ui/core"
 import Rating from "@material-ui/lab/Rating"
+import BrushIcon from "@material-ui/icons/Brush"
+import KeyboardIcon from "@material-ui/icons/Keyboard"
 import { makeStyles } from "@material-ui/core/styles"
 
 const useStyles = makeStyles(theme => ({
   root: {
     margin: 0,
-    padding: 0,
+    paddingTop: 50,
+    paddingBottom: 50,
+    [theme.breakpoints.down("sm")]: {
+      paddingTop: 20,
+      paddingBottom: 20,
+    },
     backgroundColor: "yellow",
+  },
+  skillBox: {
+    maxWidth: "500px",
+    margin: 20,
+    [theme.breakpoints.down("lg")]: {
+      maxWidth: "300px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      margin: 10,
+    },
   },
 }))
 
@@ -37,10 +53,12 @@ const DisplaySkills = () => {
           description
           experience
           level
+          type
         }
       }
     }
   `)
+
   return (
     <Paper elevation={0} className={classes.root} square>
       <Grid container direction="column" justify="space-evenly" align="center">
@@ -53,35 +71,41 @@ const DisplaySkills = () => {
           </Grid>
         </Grid>
         <Grid item>
-          <Grid container justify="space-evenly" align="center">
+          <Grid container justify="space-around" alignItems="center">
             {data.strapiSkills.skill.map(item => {
               return (
-                <Grid item xs={3} id={item.id}>
+                <Grid item id={item.id} className={classes.skillBox}>
                   <Card elevation={0}>
                     <CardContent>
-                      <Typography variant="h5">{item.title}</Typography>
-                      <Typography
-                        variant="body2"
-                        color="textSecondary"
-                        component="p"
-                      >
-                        {item.description}
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        color="textSecondary"
-                        component="p"
-                      >
-                        {item.experience}
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        color="textSecondary"
-                        component="p"
-                      >
-                        Level
-                      </Typography>
-                      <Rating name="Level" value={item.level} readOnly />
+                      <Grid container>
+                        <Grid item xs={2}>
+                          <Grid container direction="column">
+                            {item.type === "design" ? (
+                              <BrushIcon />
+                            ) : (
+                              <KeyboardIcon />
+                            )}
+                          </Grid>
+                        </Grid>
+                        <Grid item xs={9}>
+                          <Grid
+                            container
+                            direction="column"
+                            justify="center"
+                            alignItems="flex-start"
+                          >
+                            <Typography variant="h5">{item.title}</Typography>
+                            <Typography variant="body1" color="textSecondary">
+                              {item.description}
+                            </Typography>
+                            <Typography variant="body1">
+                              {item.experience} year
+                            </Typography>
+
+                            <Rating name="Level" value={item.level} readOnly />
+                          </Grid>
+                        </Grid>
+                      </Grid>
                     </CardContent>
                   </Card>
                 </Grid>

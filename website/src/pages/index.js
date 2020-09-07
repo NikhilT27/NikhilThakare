@@ -8,6 +8,9 @@ import DisplayMystories from "../components/displayMystories"
 import DisplayMyAwards from "../components/displayAwards"
 import Projects from "../components/projects"
 import Experiences from "../components/experiences"
+import Footer from "../components/footer"
+
+import Spring from "../components/spring"
 
 import SEO from "../components/seo"
 
@@ -17,13 +20,15 @@ const IndexPage = () => {
       <CssBaseline />
       <Layout>
         <SEO title="Home" />
+        {/* <Spring /> */}
         <Introduction />
         <DisplaySkills />
         <DisplayEducations />
         <DisplayMystories />
-        <DisplayMyAwards />
-        <Projects />
-        <Experiences />
+        {/* <Projects /> */}
+        {/* <Experiences /> */}
+        {/* <DisplayMyAwards /> */}
+        <Footer />
       </Layout>
     </React.Fragment>
   )

@@ -3,7 +3,6 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import ReactMarkdown from "react-markdown"
 
-import Image from "./image"
 import {
   Button,
   Grid,
