@@ -1,4 +1,5 @@
 import React from "react"
+
 import CssBaseline from "@material-ui/core/CssBaseline"
 import Layout from "../components/layout"
 import Introduction from "../components/introduction"
@@ -20,14 +21,16 @@ const IndexPage = () => {
       <CssBaseline />
       <Layout>
         <SEO title="Home" />
+
         {/* <Spring /> */}
         <Introduction />
         <DisplaySkills />
         <DisplayEducations />
-        <DisplayMystories />
-        {/* <Projects /> */}
-        {/* <Experiences /> */}
-        {/* <DisplayMyAwards /> */}
+        {/* <DisplayMystories /> */}
+        <Projects />
+        <Experiences />
+        <DisplayMyAwards />
+
         <Footer />
       </Layout>
     </React.Fragment>

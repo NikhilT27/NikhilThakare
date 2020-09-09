@@ -10,6 +10,8 @@ import {
   Typography,
   Card,
   CardContent,
+  LinearProgress,
+  Box,
 } from "@material-ui/core"
 import Rating from "@material-ui/lab/Rating"
 import BrushIcon from "@material-ui/icons/Brush"
@@ -19,21 +21,34 @@ import { makeStyles } from "@material-ui/core/styles"
 const useStyles = makeStyles(theme => ({
   root: {
     margin: 0,
+
     paddingTop: 50,
     paddingBottom: 50,
+    paddingLeft: 20,
+    paddingRight: 20,
+
     [theme.breakpoints.down("sm")]: {
       paddingTop: 20,
       paddingBottom: 20,
     },
-    backgroundColor: "yellow",
+    background: "#a1ffaa",
   },
   skillBox: {
+    minWidth: "400px",
+    margin: 20,
+    [theme.breakpoints.down("xs")]: {
+      minWidth: "300px",
+      margin: 10,
+    },
+  },
+  contentBox: {
     maxWidth: "500px",
     margin: 20,
-    [theme.breakpoints.down("lg")]: {
-      maxWidth: "300px",
+    [theme.breakpoints.down("md")]: {
+      maxWidth: "400px",
     },
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down("sm")]: {
+      maxWidth: "300px",
       margin: 10,
     },
   },
@@ -47,10 +62,10 @@ const DisplaySkills = () => {
       strapiSkills {
         Title
         skill_tagline
+        description
         skill {
           id
           title
-          description
           experience
           level
           type
@@ -61,57 +76,61 @@ const DisplaySkills = () => {
 
   return (
     <Paper elevation={0} className={classes.root} square>
-      <Grid container direction="column" justify="space-evenly" align="center">
+      <Grid container direction="column" justify="center" alignItems="center">
         <Grid item>
-          <Grid container direction="column">
-            <h1>{data.strapiSkills.Title}</h1>
-            <div>
-              <ReactMarkdown source={data.strapiSkills.skill_tagline} />
-            </div>
-          </Grid>
+          <Typography variant="h4">{data.strapiSkills.Title}</Typography>
         </Grid>
         <Grid item>
-          <Grid container justify="space-around" alignItems="center">
-            {data.strapiSkills.skill.map(item => {
-              return (
-                <Grid item id={item.id} className={classes.skillBox}>
-                  <Card elevation={0}>
-                    <CardContent>
-                      <Grid container>
-                        <Grid item xs={2}>
-                          <Grid container direction="column">
-                            {item.type === "design" ? (
-                              <BrushIcon />
-                            ) : (
-                              <KeyboardIcon />
-                            )}
-                          </Grid>
-                        </Grid>
-                        <Grid item xs={9}>
-                          <Grid
-                            container
-                            direction="column"
-                            justify="center"
-                            alignItems="flex-start"
-                          >
-                            <Typography variant="h5">{item.title}</Typography>
-                            <Typography variant="body1" color="textSecondary">
-                              {item.description}
-                            </Typography>
-                            <Typography variant="body1">
-                              {item.experience} year
-                            </Typography>
+          <Typography>
+            <ReactMarkdown source={data.strapiSkills.skill_tagline} />
+          </Typography>
+        </Grid>
+      </Grid>
+      <Grid container alignItems="center" justify="center" spacing={4}>
+        <Grid item>
+          <Grid container justify="space-evenly" alignItems="center">
+            <Box>
+              {data.strapiSkills.skill.map(item => {
+                return (
+                  <>
+                    <Grid id={item.id} className={classes.skillBox}>
+                      <div>
+                        <LinearProgress
+                          variant="determinate"
+                          value={80}
+                          color="secondary"
+                        />
+                      </div>
+                    </Grid>
+                    <Grid container justify="space-between">
+                      <div>
+                        <Grid container>
+                          {item.type === "design" ? (
+                            <BrushIcon />
+                          ) : (
+                            <KeyboardIcon />
+                          )}
 
-                            <Rating name="Level" value={item.level} readOnly />
-                          </Grid>
+                          <Typography>{item.title}</Typography>
                         </Grid>
-                      </Grid>
-                    </CardContent>
-                  </Card>
-                </Grid>
-              )
-            })}
+                      </div>
+                      <div>
+                        <Typography>80 %</Typography>
+                      </div>
+                    </Grid>
+                  </>
+                )
+              })}
+            </Box>
           </Grid>
+        </Grid>
+
+        <Grid item>
+          <Box className={classes.contentBox}>
+            <Typography variant="body1">
+              {data.strapiSkills.description}
+            </Typography>
+          </Box>
         </Grid>
       </Grid>
     </Paper>

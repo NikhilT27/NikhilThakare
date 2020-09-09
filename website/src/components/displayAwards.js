@@ -11,11 +11,29 @@ import {
   Card,
   CardContent,
   CardMedia,
+  Box,
 } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
+import StarIcon from "@material-ui/icons/Star"
+
 const useStyles = makeStyles(theme => ({
   root: {
+    paddingTop: 100,
+    paddingBottom: 100,
+
     backgroundColor: "gold",
+  },
+  image: {
+    width: "400px",
+    [theme.breakpoints.down("xs")]: {
+      width: "300px",
+    },
+  },
+  content: {
+    width: "500px",
+    [theme.breakpoints.down("sm")]: {
+      width: "300px",
+    },
   },
 }))
 
@@ -39,43 +57,44 @@ const DisplayAwards = () => {
           }
         }
       }
+      plant: file(relativePath: { eq: "plant.png" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
     }
   `)
 
   return (
     <Paper elevation={0} className={classes.root} square>
-      <Grid container direction="column" justify="space-evenly" align="center">
-        <Grid item>
-          <Grid container direction="column">
-            <Typography variant="h4">{data.strapiAwards.title}</Typography>
-            <Typography variant="body">
-              {data.strapiAwards.desciption}
-            </Typography>
-          </Grid>
-        </Grid>
-        <Grid item>
-          <Grid container justify="space-evenly" align="center">
-            {data.strapiAwards.award.map(item => {
-              return (
-                <Grid item xs={3} id={item.id}>
-                  <Card elevation={0}>
-                    <CardContent>
-                      <Typography variant="h5">{item.title}</Typography>
-                      <Typography
-                        variant="body"
-                        color="textSecondary"
-                        component="p"
-                      >
-                        {item.descrption}
-                      </Typography>
-                      <Img fluid={item.image.childImageSharp.fluid} />
-                    </CardContent>
-                  </Card>
-                </Grid>
-              )
-            })}
-          </Grid>
-        </Grid>
+      <Grid container direction="column" justify="center" alignItems="center">
+        <Box>
+          <Typography variant="h4">{data.strapiAwards.title}</Typography>
+          <Typography variant="body">{data.strapiAwards.desciption}</Typography>
+        </Box>
+
+        {data.strapiAwards.award.map(item => {
+          return (
+            <Box>
+              <Grid
+                container
+                justify="space-around"
+                alignItems="center"
+                id={item.id}
+              >
+                <Box className={classes.image}>
+                  <Img fluid={data.plant.childImageSharp.fluid} />
+                </Box>
+                <Box className={classes.content}>
+                  <Typography variant="h5">{item.title}</Typography>
+                  <Typography variant="body1">{item.descrption}</Typography>
+                </Box>
+              </Grid>
+            </Box>
+          )
+        })}
       </Grid>
     </Paper>
   )

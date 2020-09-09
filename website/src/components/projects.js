@@ -19,7 +19,28 @@ import GitHubIcon from "@material-ui/icons/GitHub"
 import { makeStyles } from "@material-ui/core/styles"
 
 const useStyles = makeStyles(theme => ({
-  root: {},
+  root: {
+    paddingTop: 100,
+    paddingBottom: 100,
+  },
+  image: {
+    width: "400px",
+    [theme.breakpoints.down("xs")]: {
+      width: "300px",
+    },
+  },
+  content: {
+    width: "500px",
+    [theme.breakpoints.down("sm")]: {
+      width: "300px",
+    },
+  },
+  project: {
+    padding: 30,
+    [theme.breakpoints.down("sm")]: {
+      padding: 10,
+    },
+  },
 }))
 
 const Projects = () => {
@@ -47,46 +68,69 @@ const Projects = () => {
   `)
 
   return (
-    <Paper elevation={4} className={classes.root} square>
+    <Paper elevation={0} className={classes.root} square>
       <Grid container direction="column" justify="space-evenly" align="center">
-        <Grid item>
-          <Grid container direction="column">
-            <Typography variant="h4">{data.strapiProjects.Title}</Typography>
-            <Typography variant="h4">
-              {data.strapiProjects.description}
-            </Typography>
-          </Grid>
-        </Grid>
-        <Grid item>
-          <Grid container justify="space-evenly" align="center">
-            {data.strapiProjects.project.map(item => {
-              return (
-                <Paper>
-                  <Grid item xs={12} id={item.id}>
-                    <Card elevation={0}>
-                      <CardContent>
-                        <Typography variant="h5">{item.title}</Typography>
-                        <Typography
-                          variant="body"
-                          color="textSecondary"
-                          component="p"
-                        >
-                          {item.description}
+        <Typography variant="h4">{data.strapiProjects.Title}</Typography>
+        <Typography variant="h4">{data.strapiProjects.description}</Typography>
+        {data.strapiProjects.project.map(item => {
+          return (
+            <Box className={classes.project}>
+              <Grid container justify="center" alignItems="center">
+                {item.id % 2 != 0 ? (
+                  <Box className={classes.image}>
+                    <Img fluid={item.image.childImageSharp.fluid} />
+                  </Box>
+                ) : (
+                  <div></div>
+                )}
+                <Grid item>
+                  <Box className={classes.content}>
+                    <Grid container justify="center" alignItems="center">
+                      {item.id % 2 != 0 ? (
+                        <Grid item sm={3} xs={12}>
+                          <Typography
+                            variant="h2"
+                            style={{ fontWeight: "bold" }}
+                          >
+                            {item.id}
+                          </Typography>
+                        </Grid>
+                      ) : (
+                        <div></div>
+                      )}
+                      <Grid item sm={9} xs={12}>
+                        <Typography variant="h5" style={{ fontWeight: "bold" }}>
+                          {item.title}
                         </Typography>
-                        <CardMedia style={{ maxWidth: "100" }}>
-                          <Img fluid={item.image.childImageSharp.fluid} />
-                        </CardMedia>
-                        <IconButton target="_blank" href={item.github_link}>
-                          <GitHubIcon />
-                        </IconButton>
-                      </CardContent>
-                    </Card>
-                  </Grid>
-                </Paper>
-              )
-            })}
-          </Grid>
-        </Grid>
+                      </Grid>
+                      {item.id % 2 == 0 ? (
+                        <Grid item sm={3} xs={12}>
+                          <Typography
+                            variant="h2"
+                            style={{ fontWeight: "bold" }}
+                          >
+                            {item.id}
+                          </Typography>
+                        </Grid>
+                      ) : (
+                        <div></div>
+                      )}
+                    </Grid>
+
+                    <Typography>{item.description}</Typography>
+                  </Box>
+                </Grid>
+                {item.id % 2 == 0 ? (
+                  <Box className={classes.image}>
+                    <Img fluid={item.image.childImageSharp.fluid} />
+                  </Box>
+                ) : (
+                  <div></div>
+                )}
+              </Grid>
+            </Box>
+          )
+        })}
       </Grid>
     </Paper>
   )

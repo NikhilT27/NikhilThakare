@@ -10,6 +10,8 @@ import {
   Typography,
   Card,
   CardContent,
+  Box,
+  Hidden,
 } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 
@@ -23,7 +25,7 @@ import {
 } from "@material-ui/lab"
 const useStyles = makeStyles(theme => ({
   root: {
-    backgroundColor: "#9be0f2",
+    backgroundColor: "#fcf7cc",
     paddingTop: 50,
     paddingBottom: 50,
     [theme.breakpoints.down("sm")]: {
@@ -31,14 +33,17 @@ const useStyles = makeStyles(theme => ({
       paddingBottom: 20,
     },
   },
-  EducationBox: {
-    width: "400px",
-    margin: 20,
-    [theme.breakpoints.down("lg")]: {
-      width: "300px",
+  timeline: {
+    width: "800px",
+    marginTop: 20,
+    marginBottom: 20,
+
+    [theme.breakpoints.down("sm")]: {
+      width: "400px",
     },
     [theme.breakpoints.down("xs")]: {
-      margin: 10,
+      width: "auto",
+      padding: 0,
     },
   },
 }))
@@ -69,62 +74,51 @@ const DisplayEducation = () => {
           </Grid>
         </Grid>
         <Grid item>
-          <Grid container justify="space-evenly" align="center">
-            <Timeline align="alternate">
-              {data.strapiEducations.education.map(item => {
-                return (
-                  <TimelineItem>
+          <Timeline align="alternate" className={classes.timeline}>
+            {data.strapiEducations.education.map(item => {
+              return (
+                <TimelineItem>
+                  <Hidden xsDown>
                     <TimelineSeparator>
-                      <TimelineDot />
-                      <TimelineConnector />
+                      <TimelineConnector color="secondary" />
+                      <TimelineDot color="secondary" />
+                      <TimelineConnector color="secondary" />
                     </TimelineSeparator>
-                    <TimelineContent>
-                      <Card elevation={0}>
-                        <CardContent>
+                  </Hidden>
+                  <TimelineContent>
+                    <Box>
+                      <Grid
+                        container
+                        justify="space-evenly"
+                        alignItems="center"
+                      >
+                        <Grid item>
                           <Grid
                             container
-                            justify="space-evenly"
+                            direction="column"
+                            justify="center"
                             alignItems="center"
                           >
-                            <Grid item>
-                              <Grid
-                                container
-                                direction="column"
-                                justify="center"
-                                alignItems="center"
-                              >
-                                <Typography variant="h5">
-                                  {item.degreeName}
-                                </Typography>
-                                <Typography
-                                  variant="body"
-                                  color="textSecondary"
-                                  component="p"
-                                >
-                                  {item.college}
-                                </Typography>
-                              </Grid>
-                            </Grid>
-                            <Grid item>
-                              <Grid
-                                container
-                                justify="center"
-                                alignItems="center"
-                              >
-                                <Typography variant="h6">
-                                  {item.marks}
-                                </Typography>
-                              </Grid>
-                            </Grid>
+                            <Typography variant="h6">
+                              {item.degreeName}
+                            </Typography>
+                            <Typography
+                              variant="body"
+                              color="textSecondary"
+                              component="p"
+                            >
+                              {item.college}
+                            </Typography>
+                            <Typography variant="h6">{item.marks}</Typography>
                           </Grid>
-                        </CardContent>
-                      </Card>
-                    </TimelineContent>
-                  </TimelineItem>
-                )
-              })}
-            </Timeline>
-          </Grid>
+                        </Grid>
+                      </Grid>
+                    </Box>
+                  </TimelineContent>
+                </TimelineItem>
+              )
+            })}
+          </Timeline>
         </Grid>
       </Grid>
     </Paper>
