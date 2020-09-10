@@ -71,7 +71,9 @@ const Projects = () => {
     <Paper elevation={0} className={classes.root} square>
       <Grid container direction="column" justify="space-evenly" align="center">
         <Typography variant="h4">{data.strapiProjects.Title}</Typography>
-        <Typography variant="h4">{data.strapiProjects.description}</Typography>
+        <Typography variant="body1">
+          {data.strapiProjects.description}
+        </Typography>
         {data.strapiProjects.project.map(item => {
           return (
             <Box className={classes.project}>

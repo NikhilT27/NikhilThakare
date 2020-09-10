@@ -1,31 +1,21 @@
 import React from "react"
-import { Link, useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import ReactMarkdown from "react-markdown"
 
-import {
-  Button,
-  Grid,
-  Paper,
-  Typography,
-  Card,
-  CardContent,
-  LinearProgress,
-  Box,
-} from "@material-ui/core"
-import BackgroundImage from "gatsby-background-image"
+import { Grid, Paper, Typography, LinearProgress, Box } from "@material-ui/core"
 
-import Rating from "@material-ui/lab/Rating"
 import BrushIcon from "@material-ui/icons/Brush"
 import KeyboardIcon from "@material-ui/icons/Keyboard"
 import { makeStyles } from "@material-ui/core/styles"
+import Tooltip from "@material-ui/core/Tooltip"
 
 const useStyles = makeStyles(theme => ({
   root: {
     margin: 0,
 
-    paddingTop: 50,
-    paddingBottom: 50,
+    paddingTop: 100,
+    paddingBottom: 100,
     paddingLeft: 20,
     paddingRight: 20,
 
@@ -33,7 +23,7 @@ const useStyles = makeStyles(theme => ({
       paddingTop: 20,
       paddingBottom: 20,
     },
-    background: " gold",
+    background: "gold",
     // background: "transparent",
   },
   skillBox: {
@@ -65,10 +55,10 @@ const useStyles = makeStyles(theme => ({
     backgroundPosition: "bottom center",
     backgroundRepeat: "repeat-y",
     backgroundSize: "cover",
-    background: "gold",
+    background: "#C2C4D4",
   },
   image: {
-    width: "400px",
+    width: "500px",
     marginBottom: `1.45rem`,
     [theme.breakpoints.down("sm")]: {
       width: "300px",
@@ -100,7 +90,7 @@ const DisplaySkills = () => {
           }
         }
       }
-      skillImage: file(relativePath: { eq: "skillHorn.jpg" }) {
+      skillImage: file(relativePath: { eq: "horn.png" }) {
         childImageSharp {
           fluid {
             ...GatsbyImageSharpFluid
@@ -124,7 +114,7 @@ const DisplaySkills = () => {
           </Typography>
         </Grid>
       </Grid>
-      <Grid container alignItems="center" justify="center" spacing={4}>
+      <Grid container alignItems="center" justify="space-around">
         <Grid item>
           <Grid container justify="space-evenly" alignItems="center">
             <Box>
@@ -149,11 +139,11 @@ const DisplaySkills = () => {
                             <KeyboardIcon />
                           )}
 
-                          <Typography>{item.title}</Typography>
+                          <Typography variant="body1">{item.title}</Typography>
                         </Grid>
                       </div>
                       <div>
-                        <Typography>{item.level} %</Typography>
+                        <Typography variant="body1">{item.level} %</Typography>
                       </div>
                     </Grid>
                   </>
@@ -164,14 +154,18 @@ const DisplaySkills = () => {
         </Grid>
 
         <Grid item>
-          <Box className={classes.contentBox}>
-            <Typography variant="body1">
-              {/* {data.strapiSkills.description} */}
-              <Box className={classes.image}>
-                <Img fluid={data.skillImage.childImageSharp.fluid} />
-              </Box>
-            </Typography>
-          </Box>
+          <Tooltip
+            title={
+              <Typography variant="body1">
+                One of my Drawings, for more do check ART section
+              </Typography>
+            }
+            arrow
+          >
+            <Box className={classes.image}>
+              <Img fluid={data.skillImage.childImageSharp.fluid} />
+            </Box>
+          </Tooltip>
         </Grid>
       </Grid>
     </Paper>

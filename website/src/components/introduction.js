@@ -16,7 +16,6 @@ import {
 } from "@material-ui/core"
 import { useSpring, animated } from "react-spring"
 import { makeStyles } from "@material-ui/core/styles"
-import svg from "../images/thanks.svg"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -100,7 +99,7 @@ const Introduction = () => {
                   <Typography variant="h3" style={{ fontWeight: "bold" }}>
                     {data.strapiIntroductions.Name}
                   </Typography>
-                  <Typography variant="h4">निखिल ठाकरे</Typography>
+                  <Typography variant="h4">निखिल ठाकरे ನಿಖಿಲ್ ಠಾಕರೆ</Typography>
 
                   <animated.div style={travelFromLeft}>
                     <div>

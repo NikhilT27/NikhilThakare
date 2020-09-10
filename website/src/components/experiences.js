@@ -1,18 +1,10 @@
 import React from "react"
-import { Link, useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import ReactMarkdown from "react-markdown"
+import BackgroundImage from "gatsby-background-image"
 
-import {
-  Button,
-  Grid,
-  Paper,
-  Typography,
-  Card,
-  CardContent,
-  IconButton,
-  Box,
-} from "@material-ui/core"
+import { Grid, Paper, Typography, Box } from "@material-ui/core"
 
 import GitHubIcon from "@material-ui/icons/GitHub"
 import ChevronRightIcon from "@material-ui/icons/ChevronRight"
@@ -22,7 +14,8 @@ const useStyles = makeStyles(theme => ({
   root: {
     paddingTop: 50,
     paddingBottom: 50,
-    backgroundColor: "#a1ffaa",
+    // backgroundColor: "#a1ffaa",
+    backgroundColor: "transparent",
   },
   experienceBox: {
     paddingTop: 50,
@@ -37,19 +30,19 @@ const useStyles = makeStyles(theme => ({
       width: "300px",
     },
   },
+  backg: {
+    width: "100%",
+    backgroundPosition: "top left",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "fit",
+    background: "#a1ffaa",
+  },
 }))
 
 const Experiences = () => {
   const classes = useStyles()
   const data = useStaticQuery(graphql`
     {
-      placeholderImage: file(relativePath: { eq: "boldcare.png" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
       allStrapiExperiences {
         totalCount
         edges {
@@ -59,10 +52,24 @@ const Experiences = () => {
             Description
             date
             strapiId
+            Logo {
+              childImageSharp {
+                fluid {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
             Details {
               id
               brief
             }
+          }
+        }
+      }
+      backgroundImage: file(relativePath: { eq: "upPlant.png" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
           }
         }
       }
@@ -82,7 +89,7 @@ const Experiences = () => {
             <Box className={classes.experienceBox}>
               <Grid container justify="space-evenly" alignItems="center">
                 <Box className={classes.image}>
-                  <Img fluid={data.placeholderImage.childImageSharp.fluid} />
+                  <Img fluid={node.Logo.childImageSharp.fluid} />
                 </Box>
 
                 <Box className={classes.content}>

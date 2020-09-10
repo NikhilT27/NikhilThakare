@@ -1,16 +1,22 @@
 import React from "react"
-
 import Img from "gatsby-image"
 import { Link, useStaticQuery, graphql } from "gatsby"
-import { Box, Typography, Container, IconButton, Grid } from "@material-ui/core"
+import {
+  Box,
+  Typography,
+  IconButton,
+  Grid,
+  Tooltip,
+  CssBaseline,
+} from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 
 import Layout from "../components/layout"
 import Footer from "../components/footer"
-
 import SEO from "../components/seo"
-import CssBaseline from "@material-ui/core/CssBaseline"
+
 import ArrowBackIcon from "@material-ui/icons/ArrowBack"
+
 const useStyles = makeStyles(theme => ({
   root: {
     margin: 0,
@@ -22,7 +28,7 @@ const useStyles = makeStyles(theme => ({
     background: "#fff",
   },
   image: {
-    width: "500px",
+    width: "300px",
     marginBottom: `1.45rem`,
     [theme.breakpoints.down("sm")]: {
       width: "300px",
@@ -34,46 +40,18 @@ const Drawings = () => {
   const classes = useStyles()
   const data = useStaticQuery(graphql`
     {
-      placeholderImage: file(relativePath: { eq: "cleopatra.jpg" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
+      allStrapiDrawings {
+        nodes {
+          id
+          Title
+          Image {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid
+              }
+            }
           }
-        }
-      }
-      krishna: file(relativePath: { eq: "krishna.jpg" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      medusa: file(relativePath: { eq: "medusa.jpg" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      eye: file(relativePath: { eq: "eye.jpg" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      harlie: file(relativePath: { eq: "harlie.jpg" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      girlwithhorns: file(relativePath: { eq: "girlwithhorns.jpg" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
+          strapiId
         }
       }
     }
@@ -85,26 +63,17 @@ const Drawings = () => {
         <SEO title="Drawings" />
         <Box className={classes.root}>
           <Typography variant="h1">Hi </Typography>
-          <Typography variant="h1">Welcome to Drawing</Typography>
+          <Typography variant="h1">Welcome to my ART section</Typography>
           <Grid container justify="space-evenly" alignItems="center">
-            <Box className={classes.image}>
-              <Img fluid={data.placeholderImage.childImageSharp.fluid} />
-            </Box>
-            <Box className={classes.image}>
-              <Img fluid={data.krishna.childImageSharp.fluid} />
-            </Box>
-            <Box className={classes.image}>
-              <Img fluid={data.medusa.childImageSharp.fluid} />
-            </Box>
-            <Box className={classes.image}>
-              <Img fluid={data.eye.childImageSharp.fluid} />
-            </Box>
-            <Box className={classes.image}>
-              <Img fluid={data.harlie.childImageSharp.fluid} />
-            </Box>
-            <Box className={classes.image}>
-              <Img fluid={data.girlwithhorns.childImageSharp.fluid} />
-            </Box>
+            {data.allStrapiDrawings.nodes.map(item => {
+              return (
+                <Tooltip title={item.Title}>
+                  <Box id={item.strapiId} className={classes.image}>
+                    <Img fluid={item.Image.childImageSharp.fluid} />
+                  </Box>
+                </Tooltip>
+              )
+            })}
           </Grid>
 
           <Link to="/">

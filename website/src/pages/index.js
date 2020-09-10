@@ -11,8 +11,6 @@ import Projects from "../components/projects"
 import Experiences from "../components/experiences"
 import Footer from "../components/footer"
 
-import Spring from "../components/spring"
-
 import SEO from "../components/seo"
 
 const IndexPage = () => {
@@ -24,8 +22,8 @@ const IndexPage = () => {
 
         {/* <Spring /> */}
         <Introduction />
-        <DisplaySkills />
         <DisplayEducations />
+        <DisplaySkills />
         <Experiences />
         <Projects />
         <DisplayMyAwards />

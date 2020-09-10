@@ -53,17 +53,21 @@ export const Navbar = () => {
       <AppBar className={classes.toolbar}>
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            {/* {data.strapiIntroductions.Name} */}N T
+            {/* {data.strapiIntroductions.Name} */}
+            <Link to="/" style={{ textDecoration: "none" }}>
+              <Typography variant="h6" className={classes.title}>
+                NT
+              </Typography>
+            </Link>
           </Typography>
-          <Box display={{ xs: "none", sm: "block" }}>
-            <Button color="inherit">
-              <Link to="/page-2" style={{ textDecoration: "none" }}>
-                <Typography className={classes.title}> Page2</Typography>
-              </Link>
-            </Button>
+
+          <Box
+            display={{ xs: "none", sm: "block" }}
+            style={{ display: "flex", alignItems: "flex-end" }}
+          >
             <Button color="inherit">
               <Link to="/drawings" style={{ textDecoration: "none" }}>
-                <Typography className={classes.title}> Drawing</Typography>
+                <Typography className={classes.title}> Art</Typography>
               </Link>
             </Button>
           </Box>

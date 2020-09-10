@@ -1,20 +1,9 @@
 import React from "react"
-import { Link, useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
-import ReactMarkdown from "react-markdown"
 
-import {
-  Button,
-  Grid,
-  Paper,
-  Typography,
-  Card,
-  CardContent,
-  CardMedia,
-  Box,
-} from "@material-ui/core"
+import { Grid, Paper, Typography, Box } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
-import StarIcon from "@material-ui/icons/Star"
 
 const useStyles = makeStyles(theme => ({
   root: {

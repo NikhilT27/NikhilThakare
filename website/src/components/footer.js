@@ -14,6 +14,8 @@ import {
 import GitHubIcon from "@material-ui/icons/GitHub"
 import LinkedInIcon from "@material-ui/icons/LinkedIn"
 import InstagramIcon from "@material-ui/icons/Instagram"
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder"
+import NaturePeopleIcon from "@material-ui/icons/NaturePeople"
 
 import { makeStyles } from "@material-ui/core/styles"
 
@@ -42,8 +44,11 @@ const Footer = () => {
   return (
     <Paper className={classes.root}>
       <Grid container direction="column" justify="center" alignItems="center">
-        <Typography>Logo</Typography>
-        <Typography>nikhilthakare14@gmail.com</Typography>
+        <Typography variant="body2">
+          Made with <FavoriteBorderIcon style={{ color: "red" }} />
+        </Typography>
+        <Typography variant="h4">NT</Typography>
+        <Typography variant="body1">nikhilthakare14@gmail.com</Typography>
         <Grid item>
           <Grid
             container

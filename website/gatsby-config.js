@@ -42,6 +42,7 @@ module.exports = {
           `Awards`,
           `Projects`,
           `Experiences`,
+          `Drawings`,
         ],
         queryLimit: 1000,
       },
