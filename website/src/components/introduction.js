@@ -3,6 +3,8 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 
 import Img from "gatsby-image"
 import ReactMarkdown from "react-markdown"
+import Typical from "react-typical"
+
 import BackgroundImage from "gatsby-background-image"
 import {
   Button,
@@ -24,7 +26,8 @@ const useStyles = makeStyles(theme => ({
       paddingTop: 50,
     },
     paddingBottom: 50,
-    background: "#D8D8D8",
+    // background: "#D8D8D8",
+    background: "transparent",
   },
   image: {
     width: "400px",
@@ -32,6 +35,13 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       width: "300px",
     },
+  },
+  backg: {
+    width: "100%",
+    backgroundPosition: "bottom center",
+    backgroundRepeat: "repeat-y",
+    backgroundSize: "cover",
+    background: "#D8D8D8",
   },
 }))
 
@@ -52,7 +62,14 @@ const Introduction = () => {
         Name
         description
       }
-      placeholderImage: file(relativePath: { eq: "nikhil.jpg" }) {
+      placeholderImage: file(relativePath: { eq: "nik.png" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      backgroundImage: file(relativePath: { eq: "back.png" }) {
         childImageSharp {
           fluid {
             ...GatsbyImageSharpFluid
@@ -63,39 +80,67 @@ const Introduction = () => {
   `)
   return (
     <>
-      <Paper elevation={0} className={classes.root}>
-        <Grid
-          container
-          justify="space-evenly"
-          alignItems="center"
-          xs="12"
-          sm="auto"
-        >
-          <Grid item>
-            <Grid container direction="column">
-              <animated.div style={nameAnimation}>
-                <Typography variant="h3" style={{ fontWeight: "bold" }}>
-                  {data.strapiIntroductions.Name}
-                </Typography>
-                <Typography variant="h4">निखिल ठाकरे</Typography>
+      <BackgroundImage
+        Tag="section"
+        className={classes.backg}
+        fluid={data.backgroundImage.childImageSharp.fluid}
+        backgroundColor={`#040e18`}
+      >
+        <Paper elevation={0} className={classes.root}>
+          <Grid
+            container
+            justify="space-evenly"
+            alignItems="center"
+            xs="12"
+            sm="auto"
+          >
+            <Grid item>
+              <Grid container direction="column">
+                <animated.div style={nameAnimation}>
+                  <Typography variant="h3" style={{ fontWeight: "bold" }}>
+                    {data.strapiIntroductions.Name}
+                  </Typography>
+                  <Typography variant="h4">निखिल ठाकरे</Typography>
 
-                <animated.div style={travelFromLeft}>
-                  <div>
-                    <ReactMarkdown
-                      source={data.strapiIntroductions.description}
-                    />
-                  </div>
+                  <animated.div style={travelFromLeft}>
+                    <div>
+                      <ReactMarkdown
+                        source={data.strapiIntroductions.description}
+                      />
+                      <h1>I am </h1>
+                      <Typical
+                        steps={[
+                          "Developer",
+                          1000,
+                          "Artist",
+                          1000,
+                          "Critical Thinker",
+                          1000,
+                          "Problem Solver",
+                          1000,
+                          "UI Designer",
+                          1000,
+                          "Graphic Designer",
+                          1000,
+                          "Bad Singer",
+                          1000,
+                        ]}
+                        loop={Infinity}
+                        wrapper="h1"
+                      />
+                    </div>
+                  </animated.div>
                 </animated.div>
-              </animated.div>
+              </Grid>
+            </Grid>
+            <Grid item>
+              <Box className={classes.image}>
+                <Img fluid={data.placeholderImage.childImageSharp.fluid} />
+              </Box>
             </Grid>
           </Grid>
-          <Grid item>
-            <Box className={classes.image}>
-              <Img fluid={data.placeholderImage.childImageSharp.fluid} />
-            </Box>
-          </Grid>
-        </Grid>
-      </Paper>
+        </Paper>
+      </BackgroundImage>
     </>
   )
 }

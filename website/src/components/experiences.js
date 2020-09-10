@@ -15,6 +15,7 @@ import {
 } from "@material-ui/core"
 
 import GitHubIcon from "@material-ui/icons/GitHub"
+import ChevronRightIcon from "@material-ui/icons/ChevronRight"
 import { makeStyles } from "@material-ui/core/styles"
 
 const useStyles = makeStyles(theme => ({
@@ -28,7 +29,7 @@ const useStyles = makeStyles(theme => ({
     paddingBottom: 50,
   },
   image: {
-    width: "300px",
+    width: "200px",
   },
   content: {
     width: "500px",
@@ -42,7 +43,7 @@ const Experiences = () => {
   const classes = useStyles()
   const data = useStaticQuery(graphql`
     {
-      placeholderImage: file(relativePath: { eq: "gatsby-astronaut.png" }) {
+      placeholderImage: file(relativePath: { eq: "boldcare.png" }) {
         childImageSharp {
           fluid {
             ...GatsbyImageSharpFluid
@@ -70,34 +71,36 @@ const Experiences = () => {
 
   return (
     <Paper elevation={0} className={classes.root}>
-      <Grid container direction="column" alignItems="center">
-        <Typography variant="h3">Experience</Typography>
-        <Typography>Description</Typography>
+      <Grid container direction="column">
+        <Grid container direction="column" justify="center" alignItems="center">
+          <Typography variant="h4">Experience</Typography>
+          <Typography variant="body1">Description</Typography>
+        </Grid>
 
         {data.allStrapiExperiences.edges.map(({ node }) => {
           return (
             <Box className={classes.experienceBox}>
-              <Grid container justify="space-between" alignItems="center">
-                <div className={classes.image}>
+              <Grid container justify="space-evenly" alignItems="center">
+                <Box className={classes.image}>
                   <Img fluid={data.placeholderImage.childImageSharp.fluid} />
-                </div>
+                </Box>
 
-                <div className={classes.content}>
+                <Box className={classes.content}>
                   <Grid container direction="column">
-                    <Typography variant="h6">{node.Title}</Typography>
-                    <Typography variant="body">{node.Company}</Typography>
-                    <Typography variant="body">{node.date}</Typography>
-                    <Typography variant="body">{node.Description}</Typography>
+                    <Typography variant="h5">{node.Title}</Typography>
+                    <Typography variant="h6">{node.Company}</Typography>
+                    <Typography variant="body1">{node.date}</Typography>
+                    <Typography variant="body2">{node.Description}</Typography>
 
                     {node.Details.map(({ id, brief }) => {
                       return (
                         <Typography id={id} variant="body1">
-                          {brief}
+                          <ChevronRightIcon style={{ fontSize: 15 }} /> {brief}
                         </Typography>
                       )
                     })}
                   </Grid>
-                </div>
+                </Box>
               </Grid>
             </Box>
           )

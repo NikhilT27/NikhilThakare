@@ -6,6 +6,8 @@ import { Box, Typography, Container, IconButton, Grid } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 
 import Layout from "../components/layout"
+import Footer from "../components/footer"
+
 import SEO from "../components/seo"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import ArrowBackIcon from "@material-ui/icons/ArrowBack"
@@ -111,6 +113,7 @@ const Drawings = () => {
             </IconButton>
           </Link>
         </Box>
+        <Footer />
       </Layout>
     </>
   )

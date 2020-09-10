@@ -22,8 +22,8 @@ const useStyles = makeStyles(theme => ({
     margin: 0,
     paddingTop: 30,
     paddingBottom: 30,
-
-    backgroundColor: "#a1c2ff",
+    color: "white",
+    background: "#040e18",
   },
 }))
 
@@ -52,13 +52,13 @@ const Footer = () => {
             alignItems="center"
           >
             <IconButton>
-              <GitHubIcon />
+              <GitHubIcon style={{ color: "#fff" }} />
             </IconButton>
             <IconButton>
-              <LinkedInIcon />
+              <LinkedInIcon style={{ color: "#fff" }} />
             </IconButton>
             <IconButton>
-              <InstagramIcon />
+              <InstagramIcon style={{ color: "#fff" }} />
             </IconButton>
           </Grid>
         </Grid>

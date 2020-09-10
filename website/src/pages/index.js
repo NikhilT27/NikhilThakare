@@ -26,10 +26,10 @@ const IndexPage = () => {
         <Introduction />
         <DisplaySkills />
         <DisplayEducations />
-        {/* <DisplayMystories /> */}
-        <Projects />
         <Experiences />
+        <Projects />
         <DisplayMyAwards />
+        {/* <DisplayMystories /> */}
 
         <Footer />
       </Layout>

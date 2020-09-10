@@ -25,6 +25,7 @@ const useStyles = makeStyles(theme => ({
 
   title: {
     flexGrow: 1,
+    fontWeight: "bold",
     color: "black",
   },
   toolbar: {
@@ -52,17 +53,17 @@ export const Navbar = () => {
       <AppBar className={classes.toolbar}>
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            {data.strapiIntroductions.Name}
+            {/* {data.strapiIntroductions.Name} */}N T
           </Typography>
           <Box display={{ xs: "none", sm: "block" }}>
             <Button color="inherit">
               <Link to="/page-2" style={{ textDecoration: "none" }}>
-                Page2
+                <Typography className={classes.title}> Page2</Typography>
               </Link>
             </Button>
             <Button color="inherit">
               <Link to="/drawings" style={{ textDecoration: "none" }}>
-                Drawing
+                <Typography className={classes.title}> Drawing</Typography>
               </Link>
             </Button>
           </Box>

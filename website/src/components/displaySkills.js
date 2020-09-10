@@ -1,6 +1,6 @@
 import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
-
+import Img from "gatsby-image"
 import ReactMarkdown from "react-markdown"
 
 import {
@@ -13,6 +13,8 @@ import {
   LinearProgress,
   Box,
 } from "@material-ui/core"
+import BackgroundImage from "gatsby-background-image"
+
 import Rating from "@material-ui/lab/Rating"
 import BrushIcon from "@material-ui/icons/Brush"
 import KeyboardIcon from "@material-ui/icons/Keyboard"
@@ -31,7 +33,8 @@ const useStyles = makeStyles(theme => ({
       paddingTop: 20,
       paddingBottom: 20,
     },
-    background: "#a1ffaa",
+    background: " gold",
+    // background: "transparent",
   },
   skillBox: {
     minWidth: "400px",
@@ -50,6 +53,25 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       maxWidth: "300px",
       margin: 10,
+    },
+  },
+  title: {
+    flexGrow: 1,
+    fontWeight: "bold",
+    color: "black",
+  },
+  backg: {
+    width: "100%",
+    backgroundPosition: "bottom center",
+    backgroundRepeat: "repeat-y",
+    backgroundSize: "cover",
+    background: "gold",
+  },
+  image: {
+    width: "400px",
+    marginBottom: `1.45rem`,
+    [theme.breakpoints.down("sm")]: {
+      width: "300px",
     },
   },
 }))
@@ -71,6 +93,20 @@ const DisplaySkills = () => {
           type
         }
       }
+      backgroundImage: file(relativePath: { eq: "window.png" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      skillImage: file(relativePath: { eq: "skillHorn.jpg" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
     }
   `)
 
@@ -78,7 +114,9 @@ const DisplaySkills = () => {
     <Paper elevation={0} className={classes.root} square>
       <Grid container direction="column" justify="center" alignItems="center">
         <Grid item>
-          <Typography variant="h4">{data.strapiSkills.Title}</Typography>
+          <Typography variant="h4" className={classes.title}>
+            {data.strapiSkills.Title}
+          </Typography>
         </Grid>
         <Grid item>
           <Typography>
@@ -97,7 +135,7 @@ const DisplaySkills = () => {
                       <div>
                         <LinearProgress
                           variant="determinate"
-                          value={80}
+                          value={item.level}
                           color="secondary"
                         />
                       </div>
@@ -115,7 +153,7 @@ const DisplaySkills = () => {
                         </Grid>
                       </div>
                       <div>
-                        <Typography>80 %</Typography>
+                        <Typography>{item.level} %</Typography>
                       </div>
                     </Grid>
                   </>
@@ -128,7 +166,10 @@ const DisplaySkills = () => {
         <Grid item>
           <Box className={classes.contentBox}>
             <Typography variant="body1">
-              {data.strapiSkills.description}
+              {/* {data.strapiSkills.description} */}
+              <Box className={classes.image}>
+                <Img fluid={data.skillImage.childImageSharp.fluid} />
+              </Box>
             </Typography>
           </Box>
         </Grid>

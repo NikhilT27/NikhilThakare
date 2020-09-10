@@ -72,29 +72,27 @@ const DisplayAwards = () => {
       <Grid container direction="column" justify="center" alignItems="center">
         <Box>
           <Typography variant="h4">{data.strapiAwards.title}</Typography>
-          <Typography variant="body">{data.strapiAwards.desciption}</Typography>
+          <Typography variant="body1">
+            {data.strapiAwards.desciption}
+          </Typography>
         </Box>
-
-        {data.strapiAwards.award.map(item => {
-          return (
-            <Box>
-              <Grid
-                container
-                justify="space-around"
-                alignItems="center"
-                id={item.id}
-              >
-                <Box className={classes.image}>
-                  <Img fluid={data.plant.childImageSharp.fluid} />
-                </Box>
-                <Box className={classes.content}>
-                  <Typography variant="h5">{item.title}</Typography>
-                  <Typography variant="body1">{item.descrption}</Typography>
-                </Box>
-              </Grid>
+        <Box>
+          <Grid container justify="space-around" alignItems="center">
+            <Box className={classes.image}>
+              <Img fluid={data.plant.childImageSharp.fluid} />
             </Box>
-          )
-        })}
+            <Box>
+              {data.strapiAwards.award.map(item => {
+                return (
+                  <Box id={item.id} className={classes.content}>
+                    <Typography variant="h5">{item.title}</Typography>
+                    <Typography variant="body1">{item.descrption}</Typography>
+                  </Box>
+                )
+              })}
+            </Box>
+          </Grid>
+        </Box>
       </Grid>
     </Paper>
   )
