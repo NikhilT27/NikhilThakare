@@ -103,9 +103,9 @@ const Introduction = () => {
 
                   <animated.div style={travelFromLeft}>
                     <div>
-                      <ReactMarkdown
+                      {/* <ReactMarkdown
                         source={data.strapiIntroductions.description}
-                      />
+                      /> */}
                       <h1>I am </h1>
                       <Typical
                         steps={[
