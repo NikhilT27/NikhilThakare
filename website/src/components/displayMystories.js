@@ -22,25 +22,10 @@ const useStyles = makeStyles(theme => ({
 
 const DisplayMystories = () => {
   const classes = useStyles()
-  const data = useStaticQuery(graphql`
-    {
-      strapiMystories {
-        story {
-          id
-          title
-          description
-          date(formatString: "DD MMMM, YYYY")
-          image {
-            childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-        }
-      }
-    }
-  `)
+  // const data = useStaticQuery(graphql`
+  //   {
+
+  // `)
 
   return (
     <Paper elevation={0} className={classes.root} square>
@@ -52,7 +37,7 @@ const DisplayMystories = () => {
         </Grid>
         <Grid item>
           <Grid container justify="space-evenly" align="center">
-            {data.strapiMystories.story.map(item => {
+            {/* {data.strapiMystories.story.map(item => {
               return (
                 <Paper elevation={0} className={classes.root}>
                   <Grid
@@ -80,7 +65,7 @@ const DisplayMystories = () => {
                   </Grid>
                 </Paper>
               )
-            })}
+            })} */}
           </Grid>
         </Grid>
       </Grid>

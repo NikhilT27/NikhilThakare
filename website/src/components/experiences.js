@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import ReactMarkdown from "react-markdown"
@@ -41,27 +41,25 @@ const useStyles = makeStyles(theme => ({
 
 const Experiences = () => {
   const classes = useStyles()
+  let count = 0
   const data = useStaticQuery(graphql`
     {
-      allStrapiExperiences {
-        totalCount
-        edges {
-          node {
-            Title
-            Company
-            Description
-            date
-            strapiId
-            Logo {
-              childImageSharp {
-                fluid {
-                  ...GatsbyImageSharpFluid
-                }
+      allStrapiExperiences(sort: { fields: strapiId, order: DESC }) {
+        nodes {
+          strapiId
+          job
+          company
+          techno_stack
+          date
+          detail {
+            data
+            id
+          }
+          logo {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid
               }
-            }
-            Details {
-              id
-              brief
             }
           }
         }
@@ -84,25 +82,27 @@ const Experiences = () => {
           <Typography variant="body1">Description</Typography>
         </Grid>
 
-        {data.allStrapiExperiences.edges.map(({ node }) => {
+        {data.allStrapiExperiences.nodes.map(item => {
+          count++
           return (
-            <Box className={classes.experienceBox}>
+            <Box id={item.strapiId} className={classes.experienceBox}>
               <Grid container justify="space-evenly" alignItems="center">
                 <Box className={classes.image}>
-                  <Img fluid={node.Logo.childImageSharp.fluid} />
+                  <Img fluid={item.logo.childImageSharp.fluid} />
                 </Box>
 
                 <Box className={classes.content}>
                   <Grid container direction="column">
-                    <Typography variant="h5">{node.Title}</Typography>
-                    <Typography variant="h6">{node.Company}</Typography>
-                    <Typography variant="body1">{node.date}</Typography>
-                    <Typography variant="body2">{node.Description}</Typography>
+                    <Typography variant="h3">{count}</Typography>
+                    <Typography variant="h5">{item.job}</Typography>
+                    <Typography variant="h6">{item.company}</Typography>
+                    <Typography variant="body1">{item.date}</Typography>
+                    <Typography variant="body2">{item.techno_stack}</Typography>
 
-                    {node.Details.map(({ id, brief }) => {
+                    {item.detail.map(({ id, data }) => {
                       return (
                         <Typography id={id} variant="body1">
-                          <ChevronRightIcon style={{ fontSize: 15 }} /> {brief}
+                          <ChevronRightIcon style={{ fontSize: 15 }} /> {data}
                         </Typography>
                       )
                     })}

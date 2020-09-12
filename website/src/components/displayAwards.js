@@ -30,20 +30,11 @@ const DisplayAwards = () => {
   const classes = useStyles()
   const data = useStaticQuery(graphql`
     {
-      strapiAwards {
-        title
-        desciption
-        award {
-          id
+      allStrapiAwards {
+        nodes {
+          strapiId
           title
-          descrption
-          image {
-            childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
+          description
         }
       }
       plant: file(relativePath: { eq: "plant.png" }) {
@@ -60,10 +51,8 @@ const DisplayAwards = () => {
     <Paper elevation={0} className={classes.root} square>
       <Grid container direction="column" justify="center" alignItems="center">
         <Box>
-          <Typography variant="h4">{data.strapiAwards.title}</Typography>
-          <Typography variant="body1">
-            {data.strapiAwards.desciption}
-          </Typography>
+          <Typography variant="h4">My Achievement</Typography>
+          <Typography variant="body1">striving to be better....</Typography>
         </Box>
         <Box>
           <Grid container justify="space-around" alignItems="center">
@@ -71,11 +60,11 @@ const DisplayAwards = () => {
               <Img fluid={data.plant.childImageSharp.fluid} />
             </Box>
             <Box>
-              {data.strapiAwards.award.map(item => {
+              {data.allStrapiAwards.nodes.map(item => {
                 return (
-                  <Box id={item.id} className={classes.content}>
+                  <Box id={item.strapiId} className={classes.content}>
                     <Typography variant="h5">{item.title}</Typography>
-                    <Typography variant="body1">{item.descrption}</Typography>
+                    <Typography variant="body1">{item.description}</Typography>
                   </Box>
                 )
               })}

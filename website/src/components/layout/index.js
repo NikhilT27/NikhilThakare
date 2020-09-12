@@ -9,7 +9,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import { Navbar } from "./components/Navbar"
-import { Container, Box } from "@material-ui/core"
+import { Container, Box, AppBar, Toolbar } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 
 const useStyles = makeStyles(theme => ({
@@ -32,6 +32,7 @@ const Layout = ({ children }) => {
   return (
     <Box>
       <Navbar />
+
       <Box>{children}</Box>
     </Box>
   )

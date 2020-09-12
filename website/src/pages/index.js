@@ -19,7 +19,6 @@ const IndexPage = () => {
       <CssBaseline />
       <Layout>
         <SEO title="Home" />
-
         {/* <Spring /> */}
         <Introduction />
         <DisplayEducations />
@@ -28,7 +27,6 @@ const IndexPage = () => {
         <Projects />
         <DisplayMyAwards />
         {/* <DisplayMystories /> */}
-
         <Footer />
       </Layout>
     </React.Fragment>

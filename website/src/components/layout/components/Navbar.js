@@ -1,5 +1,6 @@
 import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
+import Img from "gatsby-image"
 
 import MenuIcon from "@material-ui/icons/Menu"
 import {
@@ -31,9 +32,16 @@ const useStyles = makeStyles(theme => ({
   toolbar: {
     background: "transparent",
     boxShadow: "none",
+    [theme.breakpoints.down("xs")]: {
+      background: "white",
+      height: "60px",
+    },
   },
   button: {
     backgroundColor: "yellow",
+  },
+  logo: {
+    width: "60px",
   },
 }))
 
@@ -43,8 +51,22 @@ export const Navbar = () => {
     {
       strapiIntroductions {
         id
-        Name
+        name
         description
+      }
+      logo: file(relativePath: { eq: "logo.png" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      logo_white: file(relativePath: { eq: "logo_white.png" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
       }
     }
   `)
@@ -52,57 +74,56 @@ export const Navbar = () => {
     <div className={classes.root}>
       <AppBar className={classes.toolbar}>
         <Toolbar>
-          <Typography variant="h6" className={classes.title}>
-            {/* {data.strapiIntroductions.Name} */}
-            <Link to="/" style={{ textDecoration: "none" }}>
-              <Typography variant="h6" className={classes.title}>
-                NT
-              </Typography>
-            </Link>
-          </Typography>
-
-          <Box
-            display={{ xs: "none", sm: "block" }}
-            style={{ display: "flex", alignItems: "flex-end" }}
-          >
-            <Button color="inherit">
-              <Link to="/drawings" style={{ textDecoration: "none" }}>
-                <Typography className={classes.title}> Art</Typography>
+          <Grid container justify="space-between" alignItems="center">
+            <Box>
+              {/* {data.strapiIntroductions.Name} */}
+              <Link to="/" style={{ textDecoration: "none" }}>
+                <div className={classes.logo}>
+                  <Img fluid={data.logo.childImageSharp.fluid} />
+                </div>
               </Link>
-            </Button>
-          </Box>
-          <Box display={{ xs: "inline", sm: "none" }}>
-            <IconButton edge="start" color="inherit" aria-label="menu">
-              <MenuIcon />
-            </IconButton>
-          </Box>
+            </Box>
+
+            <Box
+              display={{ xs: "none", sm: "block" }}
+              style={{ display: "flex", alignItems: "flex-end" }}
+            >
+              <Button color="inherit">
+                <Link to="/drawings" style={{ textDecoration: "none" }}>
+                  <Typography className={classes.title}> Art</Typography>
+                </Link>
+              </Button>
+            </Box>
+          </Grid>
         </Toolbar>
         <Toolbar>
           <Grid direction="column">
-            <Grid item>
-              <IconButton
-                target="_blank"
-                href="https://www.linkedin.com/in/nikhil-t/"
-              >
-                <LinkedInIcon />
-              </IconButton>
-            </Grid>
-            <Grid item>
-              <IconButton
-                target="_blank"
-                href="https://www.linkedin.com/in/nikhil-t/"
-              >
-                <GitHubIcon />
-              </IconButton>
-            </Grid>{" "}
-            <Grid item>
-              <IconButton
-                target="_blank"
-                href="https://www.linkedin.com/in/nikhil-t/"
-              >
-                <InstagramIcon />
-              </IconButton>
-            </Grid>
+            <Box display={{ xs: "none", sm: "inline" }}>
+              <Grid item>
+                <IconButton
+                  target="_blank"
+                  href="https://www.linkedin.com/in/nikhil-t/"
+                >
+                  <LinkedInIcon />
+                </IconButton>
+              </Grid>
+              <Grid item>
+                <IconButton
+                  target="_blank"
+                  href="https://www.linkedin.com/in/nikhil-t/"
+                >
+                  <GitHubIcon />
+                </IconButton>
+              </Grid>{" "}
+              <Grid item>
+                <IconButton
+                  target="_blank"
+                  href="https://www.linkedin.com/in/nikhil-t/"
+                >
+                  <InstagramIcon />
+                </IconButton>
+              </Grid>
+            </Box>
           </Grid>
         </Toolbar>
       </AppBar>

@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
     background: "#fff",
   },
   image: {
-    width: "300px",
+    width: "700px",
     marginBottom: `1.45rem`,
     [theme.breakpoints.down("sm")]: {
       width: "300px",
@@ -40,18 +40,17 @@ const Drawings = () => {
   const classes = useStyles()
   const data = useStaticQuery(graphql`
     {
-      allStrapiDrawings {
+      allStrapiDrawings(sort: { fields: strapiId, order: DESC }) {
         nodes {
-          id
-          Title
-          Image {
+          strapiId
+          name
+          drawing {
             childImageSharp {
               fluid {
                 ...GatsbyImageSharpFluid
               }
             }
           }
-          strapiId
         }
       }
     }
@@ -62,16 +61,24 @@ const Drawings = () => {
       <Layout>
         <SEO title="Drawings" />
         <Box className={classes.root}>
-          <Typography variant="h1">Hi </Typography>
-          <Typography variant="h1">Welcome to my ART section</Typography>
+          <Box display={{ xs: "none", sm: "inline" }}>
+            <Typography variant="h1">Hi </Typography>
+            <Typography variant="h1">Welcome to my ART section</Typography>
+          </Box>
+          <Box display={{ xs: "inline", sm: "none" }}>
+            <Typography variant="h4">Hi </Typography>
+            <Typography variant="h4">Welcome to my ART section</Typography>
+          </Box>
           <Grid container justify="space-evenly" alignItems="center">
             {data.allStrapiDrawings.nodes.map(item => {
               return (
-                <Tooltip title={item.Title}>
-                  <Box id={item.strapiId} className={classes.image}>
-                    <Img fluid={item.Image.childImageSharp.fluid} />
-                  </Box>
-                </Tooltip>
+                <Box id={item.strapiId}>
+                  <Tooltip title={item.name}>
+                    <Box className={classes.image}>
+                      <Img fluid={item.drawing.childImageSharp.fluid} />
+                    </Box>
+                  </Tooltip>
+                </Box>
               )
             })}
           </Grid>

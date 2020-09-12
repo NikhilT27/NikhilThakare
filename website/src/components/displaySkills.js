@@ -16,18 +16,20 @@ const useStyles = makeStyles(theme => ({
 
     paddingTop: 100,
     paddingBottom: 100,
-    paddingLeft: 20,
-    paddingRight: 20,
+    paddingLeft: 50,
+    paddingRight: 50,
 
     [theme.breakpoints.down("sm")]: {
       paddingTop: 20,
       paddingBottom: 20,
+      paddingLeft: 20,
+      paddingRight: 20,
     },
-    background: "gold",
+    background: "white",
     // background: "transparent",
   },
   skillBox: {
-    minWidth: "400px",
+    minWidth: "500px",
     margin: 20,
     [theme.breakpoints.down("xs")]: {
       minWidth: "300px",
@@ -55,12 +57,14 @@ const useStyles = makeStyles(theme => ({
     backgroundPosition: "bottom center",
     backgroundRepeat: "repeat-y",
     backgroundSize: "cover",
-    background: "#C2C4D4",
   },
   image: {
-    width: "500px",
+    width: "600px",
     marginBottom: `1.45rem`,
     [theme.breakpoints.down("sm")]: {
+      width: "500px",
+    },
+    [theme.breakpoints.down("xs")]: {
       width: "300px",
     },
   },
@@ -71,15 +75,12 @@ const DisplaySkills = () => {
 
   const data = useStaticQuery(graphql`
     {
-      strapiSkills {
-        Title
-        skill_tagline
-        description
-        skill {
-          id
+      allStrapiSkills {
+        nodes {
+          strapiId
           title
+          percentage
           experience
-          level
           type
         }
       }
@@ -90,7 +91,7 @@ const DisplaySkills = () => {
           }
         }
       }
-      skillImage: file(relativePath: { eq: "horn.png" }) {
+      skillImage: file(relativePath: { eq: "horn2.png" }) {
         childImageSharp {
           fluid {
             ...GatsbyImageSharpFluid
@@ -105,55 +106,52 @@ const DisplaySkills = () => {
       <Grid container direction="column" justify="center" alignItems="center">
         <Grid item>
           <Typography variant="h4" className={classes.title}>
-            {data.strapiSkills.Title}
+            Skills
           </Typography>
         </Grid>
         <Grid item>
-          <Typography>
-            <ReactMarkdown source={data.strapiSkills.skill_tagline} />
-          </Typography>
-        </Grid>
-      </Grid>
-      <Grid container alignItems="center" justify="space-around">
-        <Grid item>
-          <Grid container justify="space-evenly" alignItems="center">
-            <Box>
-              {data.strapiSkills.skill.map(item => {
-                return (
-                  <>
-                    <Grid id={item.id} className={classes.skillBox}>
-                      <div>
-                        <LinearProgress
-                          variant="determinate"
-                          value={item.level}
-                          color="secondary"
-                        />
-                      </div>
-                    </Grid>
-                    <Grid container justify="space-between">
-                      <div>
-                        <Grid container>
-                          {item.type === "design" ? (
-                            <BrushIcon />
-                          ) : (
-                            <KeyboardIcon />
-                          )}
-
-                          <Typography variant="body1">{item.title}</Typography>
-                        </Grid>
-                      </div>
-                      <div>
-                        <Typography variant="body1">{item.level} %</Typography>
-                      </div>
-                    </Grid>
-                  </>
-                )
-              })}
-            </Box>
-          </Grid>
+          <Typography>Mazhe skills</Typography>
         </Grid>
 
         <Grid item>
+          <Box style={{ paddingTop: "50px", paddingBottom: "50px" }}>
+            {data.allStrapiSkills.nodes.map(item => {
+              return (
+                <>
+                  <Grid id={item.strapiId} className={classes.skillBox}>
+                    <div>
+                      <LinearProgress
+                        variant="determinate"
+                        value={item.percentage}
+                        color="secondary"
+                      />
+                    </div>
+                  </Grid>
+                  <Grid container justify="space-between">
+                    <div>
+                      <Grid container>
+                        {item.type === "design" ? (
+                          <BrushIcon />
+                        ) : (
+                          <KeyboardIcon />
+                        )}
+
+                        <Typography variant="body1">{item.title}</Typography>
+                      </Grid>
+                    </div>
+                    <div>
+                      <Typography variant="body1">
+                        {item.percentage} %
+                      </Typography>
+                    </div>
+                  </Grid>
+                </>
+              )
+            })}
+          </Box>
+        </Grid>
+
+        <Box>
           <Tooltip
             title={
               <Typography variant="body1">
@@ -166,7 +164,7 @@ const DisplaySkills = () => {
               <Img fluid={data.skillImage.childImageSharp.fluid} />
             </Box>
           </Tooltip>
-        </Grid>
+        </Box>
       </Grid>
     </Paper>
   )

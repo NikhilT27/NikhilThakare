@@ -38,7 +38,7 @@ module.exports = {
           `Introductions`,
           `Skills`,
           `Educations`,
-          `Mystories`,
+          // `Mystories`,
           `Awards`,
           `Projects`,
           `Experiences`,

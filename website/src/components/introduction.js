@@ -28,6 +28,9 @@ const useStyles = makeStyles(theme => ({
     // background: "#D8D8D8",
     background: "transparent",
   },
+  title: {
+    margin: 20,
+  },
   image: {
     width: "400px",
     marginBottom: `1.45rem`,
@@ -57,10 +60,10 @@ const Introduction = () => {
   const data = useStaticQuery(graphql`
     {
       strapiIntroductions {
-        id
-        Name
+        name
         description
       }
+
       placeholderImage: file(relativePath: { eq: "nik.png" }) {
         childImageSharp {
           fluid {
@@ -96,39 +99,43 @@ const Introduction = () => {
             <Grid item>
               <Grid container direction="column">
                 <animated.div style={nameAnimation}>
-                  <Typography variant="h3" style={{ fontWeight: "bold" }}>
-                    {data.strapiIntroductions.Name}
-                  </Typography>
-                  <Typography variant="h4">निखिल ठाकरे ನಿಖಿಲ್ ಠಾಕರೆ</Typography>
+                  <div className={classes.title}>
+                    <Typography variant="h3" style={{ fontWeight: "bold" }}>
+                      {data.strapiIntroductions.name}
+                    </Typography>
+                    <Typography variant="h4">
+                      निखिल ठाकरे ನಿಖಿಲ್ ಠಾಕರೆ
+                    </Typography>
 
-                  <animated.div style={travelFromLeft}>
-                    <div>
-                      {/* <ReactMarkdown
-                        source={data.strapiIntroductions.description}
-                      /> */}
-                      <h1>I am </h1>
-                      <Typical
-                        steps={[
-                          "Developer",
-                          1000,
-                          "Artist",
-                          1000,
-                          "Critical Thinker",
-                          1000,
-                          "Problem Solver",
-                          1000,
-                          "UI Designer",
-                          1000,
-                          "Graphic Designer",
-                          1000,
-                          "Bad Singer",
-                          1000,
-                        ]}
-                        loop={Infinity}
-                        wrapper="h1"
-                      />
-                    </div>
-                  </animated.div>
+                    <animated.div style={travelFromLeft}>
+                      <div>
+                        {/* <Typography>
+                          {data.strapiIntroductions.description}
+                        </Typography> */}
+                        <h1>I am </h1>
+                        <Typical
+                          steps={[
+                            "Developer",
+                            1000,
+                            "Artist",
+                            1000,
+                            "Critical Thinker",
+                            1000,
+                            "Problem Solver",
+                            1000,
+                            "UI Designer",
+                            1000,
+                            "Graphic Designer",
+                            1000,
+                            "Bad Singer",
+                            1000,
+                          ]}
+                          loop={Infinity}
+                          wrapper="h1"
+                        />
+                      </div>
+                    </animated.div>
+                  </div>
                 </animated.div>
               </Grid>
             </Grid>

@@ -1,5 +1,6 @@
 import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
+import Img from "gatsby-image"
 
 import ReactMarkdown from "react-markdown"
 
@@ -31,13 +32,14 @@ const useStyles = makeStyles(theme => ({
 
 const Footer = () => {
   const classes = useStyles()
-
   const data = useStaticQuery(graphql`
     {
-      strapiIntroductions {
-        id
-        Name
-        description
+      logo_white: file(relativePath: { eq: "logo_white.png" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
       }
     }
   `)
@@ -47,7 +49,9 @@ const Footer = () => {
         <Typography variant="body2">
           Made with <FavoriteBorderIcon style={{ color: "red" }} />
         </Typography>
-        <Typography variant="h4">NT</Typography>
+        <div style={{ width: "80px" }}>
+          <Img fluid={data.logo_white.childImageSharp.fluid} />
+        </div>{" "}
         <Typography variant="body1">nikhilthakare14@gmail.com</Typography>
         <Grid item>
           <Grid

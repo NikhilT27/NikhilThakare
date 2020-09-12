@@ -17,7 +17,13 @@ import BackgroundImage from "gatsby-background-image"
 const useStyles = makeStyles(theme => ({
   root: {
     // backgroundColor: "#fcf7cc",
-    backgroundColor: "transparent",
+    background: "rgb(34,121,0)",
+    background:
+      "-moz-linear-gradient(45deg, rgba(34,121,0,1) 0%, rgba(148,212,0,1) 29%, rgba(234,255,0,1) 100%)",
+    background:
+      "-webkit-linear-gradient(45deg, rgba(34,121,0,1) 0%, rgba(148,212,0,1) 29%, rgba(234,255,0,1) 100%)",
+    background:
+      "linear-gradient(45deg, rgba(34,121,0,1) 0%, rgba(148,212,0,1) 29%, rgba(234,255,0,1) 100%)",
 
     paddingTop: 50,
     paddingBottom: 50,
@@ -44,7 +50,7 @@ const useStyles = makeStyles(theme => ({
     backgroundPosition: "bottom left",
     backgroundRepeat: "no-repeat",
     backgroundSize: "contain",
-    background: "#fcf7cc",
+    background: "rgb(34,121,0)",
   },
 }))
 
@@ -52,12 +58,10 @@ const DisplayEducation = () => {
   const classes = useStyles()
   const data = useStaticQuery(graphql`
     {
-      strapiEducations {
-        Title
-        strapiId
-        education {
-          id
-          degreeName
+      allStrapiEducations(sort: { order: DESC, fields: strapiId }) {
+        nodes {
+          strapiId
+          degree_name
           college
           marks
         }
@@ -73,29 +77,17 @@ const DisplayEducation = () => {
   `)
 
   return (
-    <BackgroundImage
-      Tag="section"
-      className={classes.backg}
-      fluid={data.backgroundImage.childImageSharp.fluid}
-      backgroundColor={`#040e18`}
-    >
-      <Paper elevation={0} className={classes.root} square>
-        <Grid
-          container
-          direction="column"
-          justify="space-evenly"
-          align="center"
-        >
-          <Grid item>
-            <Grid container direction="column">
-              <Typography variant="h4">
-                {data.strapiEducations.Title}
-              </Typography>
-            </Grid>
+    <Paper elevation={0} className={classes.root} square>
+      <Grid container direction="column" justify="space-evenly" align="center">
+        <Grid item>
+          <Grid container direction="column">
+            <Typography variant="h4">Education</Typography>
           </Grid>
-          <Grid item>
+        </Grid>
+        <Grid item>
+          <Grid>
             <Timeline align="alternate" className={classes.timeline}>
-              {data.strapiEducations.education.map(item => {
+              {data.allStrapiEducations.nodes.map(item => {
                 return (
                   <TimelineItem>
                     <Hidden xsDown>
@@ -120,7 +112,7 @@ const DisplayEducation = () => {
                               alignItems="center"
                             >
                               <Typography variant="h6">
-                                {item.degreeName}
+                                {item.degree_name}
                               </Typography>
                               <Typography
                                 variant="body"
@@ -141,8 +133,8 @@ const DisplayEducation = () => {
             </Timeline>
           </Grid>
         </Grid>
-      </Paper>
-    </BackgroundImage>
+      </Grid>
+    </Paper>
   )
 }
 
