@@ -1,20 +1,19 @@
 {
-  "collectionName": "components_volunteer_volunteers",
+  "kind": "collectionType",
+  "collectionName": "drawings",
   "info": {
-    "name": "volunteer",
-    "icon": "asterisk"
+    "name": "drawing"
   },
-  "options": {},
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
   "attributes": {
-    "title": {
+    "name": {
       "type": "string",
       "required": true
     },
-    "description": {
-      "type": "richtext",
-      "required": true
-    },
-    "image": {
+    "drawing": {
       "model": "file",
       "via": "related",
       "allowedTypes": [

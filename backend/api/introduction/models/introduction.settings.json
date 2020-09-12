@@ -9,12 +9,13 @@
     "timestamps": true
   },
   "attributes": {
-    "Name": {
+    "name": {
       "type": "string",
       "required": true
     },
     "description": {
-      "type": "richtext"
+      "type": "text",
+      "required": true
     }
   }
 }

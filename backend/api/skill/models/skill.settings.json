@@ -9,18 +9,27 @@
     "timestamps": true
   },
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string",
       "required": true
     },
-    "skill_tagline": {
+    "experience": {
       "type": "string",
       "required": true
     },
-    "skill": {
-      "type": "component",
-      "repeatable": true,
-      "component": "skill.skill",
+    "percentage": {
+      "type": "integer",
+      "default": 46,
+      "required": true,
+      "max": 100,
+      "min": 0
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "design",
+        "technical"
+      ],
       "required": true
     }
   }

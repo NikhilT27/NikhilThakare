@@ -2,25 +2,23 @@
   "kind": "collectionType",
   "collectionName": "educations",
   "info": {
-    "name": "Education"
+    "name": "education"
   },
   "options": {
     "increments": true,
     "timestamps": true
   },
   "attributes": {
-    "Title": {
+    "degree_name": {
       "type": "string",
       "required": true
     },
-    "description": {
+    "college": {
       "type": "string",
       "required": true
     },
-    "education": {
-      "type": "component",
-      "repeatable": true,
-      "component": "education.education",
+    "marks": {
+      "type": "string",
       "required": true
     }
   }

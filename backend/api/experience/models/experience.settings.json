@@ -1,15 +1,19 @@
 {
   "kind": "collectionType",
-  "collectionName": "projects",
+  "collectionName": "experiences",
   "info": {
-    "name": "project"
+    "name": "experience"
   },
   "options": {
     "increments": true,
     "timestamps": true
   },
   "attributes": {
-    "title": {
+    "job": {
+      "type": "string",
+      "required": true
+    },
+    "company": {
       "type": "string",
       "required": true
     },
@@ -17,19 +21,23 @@
       "type": "string",
       "required": true
     },
-    "Detail": {
-      "type": "component",
-      "repeatable": true,
-      "component": "points.detail",
+    "date": {
+      "type": "string",
       "required": true
     },
-    "project_image": {
+    "logo": {
       "model": "file",
       "via": "related",
       "allowedTypes": [
         "images"
       ],
       "plugin": "upload",
+      "required": true
+    },
+    "detail": {
+      "type": "component",
+      "repeatable": true,
+      "component": "points.detail",
       "required": true
     }
   }

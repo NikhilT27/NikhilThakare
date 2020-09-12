@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_points_details",
+  "info": {
+    "name": "Detail",
+    "icon": "align-justify"
+  },
+  "options": {},
+  "attributes": {
+    "data": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

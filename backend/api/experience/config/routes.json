@@ -2,48 +2,48 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/mystories",
-      "handler": "mystory.find",
+      "path": "/experiences",
+      "handler": "experience.find",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/mystories/count",
-      "handler": "mystory.count",
+      "path": "/experiences/count",
+      "handler": "experience.count",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/mystories/:id",
-      "handler": "mystory.findOne",
+      "path": "/experiences/:id",
+      "handler": "experience.findOne",
       "config": {
         "policies": []
       }
     },
     {
       "method": "POST",
-      "path": "/mystories",
-      "handler": "mystory.create",
+      "path": "/experiences",
+      "handler": "experience.create",
       "config": {
         "policies": []
       }
     },
     {
       "method": "PUT",
-      "path": "/mystories/:id",
-      "handler": "mystory.update",
+      "path": "/experiences/:id",
+      "handler": "experience.update",
       "config": {
         "policies": []
       }
     },
     {
       "method": "DELETE",
-      "path": "/mystories/:id",
-      "handler": "mystory.delete",
+      "path": "/experiences/:id",
+      "handler": "experience.delete",
       "config": {
         "policies": []
       }
