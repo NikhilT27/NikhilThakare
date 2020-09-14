@@ -1,19 +1,15 @@
 module.exports = ({ env }) => ({
-  defaultConnection: 'default',
+  defaultConnection: "default",
   connections: {
     default: {
-      connector: 'mongoose',
+      connector: "mongoose",
       settings: {
-        host: env('DATABASE_HOST', '127.0.0.1'),
-        srv: env.bool('DATABASE_SRV', false),
-        port: env.int('DATABASE_PORT', 27017),
-        database: env('DATABASE_NAME', 'backend'),
-        username: env('DATABASE_USERNAME', ''),
-        password: env('DATABASE_PASSWORD', ''),
+        uri:
+          "mongodb://nikhilT27:Iamportfolio27@portfolio-strapi-backen-shard-00-00.o9n0o.mongodb.net:27017,portfolio-strapi-backen-shard-00-01.o9n0o.mongodb.net:27017,portfolio-strapi-backen-shard-00-02.o9n0o.mongodb.net:27017/<dbname>?ssl=true&replicaSet=atlas-j0dxbr-shard-0&authSource=admin&retryWrites=true&w=majority",
       },
       options: {
-        authenticationDatabase: env('AUTHENTICATION_DATABASE', null),
-        ssl: env.bool('DATABASE_SSL', false),
+        authenticationDatabase: env("AUTHENTICATION_DATABASE", null),
+        ssl: env.bool("DATABASE_SSL", true),
       },
     },
   },
