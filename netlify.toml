@@ -1,3 +1,8 @@
 [[redirects]]
 from = "/"
 to = "website/"
+
+[build]
+  base    = "subdirectory"
+  publish = "subdirectory/public/"
+  command = "gatsby build"
