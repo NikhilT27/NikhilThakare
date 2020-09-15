@@ -61,7 +61,7 @@ const useStyles = makeStyles(theme => ({
     transition: "0.5s",
     "&:hover": {
       transform: "scale(1.2)",
-      background: "rgba(255,255,0, 0.3)",
+      background: "rgba(0,0,0, 0.1)",
     },
   },
 }))
