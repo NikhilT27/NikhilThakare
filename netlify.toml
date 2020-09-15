@@ -3,6 +3,6 @@ from = "/"
 to = "website/"
 
 [build]
-  base    = "website"
+  base    = ""
   publish = "website/public/"
-  command = "yarn build"
+  command = "gatsby build"
