@@ -1,3 +1,3 @@
-  base    = "website"
-  publish = "website/public/"
-  command = "gatsby build"
+  base    = "NikhilThakare/website"
+  publish = "NikhilThakare/website/public/"
+  command = "yarn build"
