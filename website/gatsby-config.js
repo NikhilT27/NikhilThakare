@@ -33,20 +33,20 @@ module.exports = {
     {
       resolve: "gatsby-source-strapi",
       options: {
-        apiURL: "http://localhost:1337",
+        apiURL: "https://strapi-mongodb-2712.herokuapp.com",
         contentTypes: [
-          `Introductions`,
-          `Skills`,
-          `Educations`,
-          // `Mystories`,
-          `Awards`,
-          `Projects`,
-          `Experiences`,
-          `Drawings`,
+          "Awards",
+          "Drawings",
+          "Educations",
+          "Experiences",
+          "Introductions",
+          "Projects",
+          "Skills",
         ],
         queryLimit: 1000,
       },
     },
+
     {
       resolve: `gatsby-plugin-material-ui`,
       options: {
