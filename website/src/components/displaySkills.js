@@ -67,6 +67,23 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("xs")]: {
       width: "300px",
     },
+    transition: "0.5s",
+    "&:hover": {
+      transform: "scale(1.2)",
+    },
+  },
+  skillMainBox: {
+    paddingTop: "50px",
+    paddingBottom: "50px",
+    transition: "0.5s",
+    "&:hover": {
+      transform: "scale(0.9)",
+    },
+  },
+  eachSkill: {
+    "&:hover": {
+      transform: "scale(1.2)",
+    },
   },
 }))
 
@@ -114,10 +131,10 @@ const DisplaySkills = () => {
         </Grid>
 
         <Grid item>
-          <Box style={{ paddingTop: "50px", paddingBottom: "50px" }}>
+          <Box className={classes.skillMainBox}>
             {data.allStrapiSkills.nodes.map(item => {
               return (
-                <>
+                <Box className={classes.eachSkill}>
                   <Grid id={item.strapiId} className={classes.skillBox}>
                     <div>
                       <LinearProgress
@@ -145,7 +162,7 @@ const DisplaySkills = () => {
                       </Typography>
                     </div>
                   </Grid>
-                </>
+                </Box>
               )
             })}
           </Box>

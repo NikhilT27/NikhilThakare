@@ -1,0 +1,8 @@
+{
+  "provider": "cloudinary",
+  "providerOptions": {
+    "cloud_name": "gafrfdasdx",
+    "api_key": "535593915856875",
+    "api_secret": "zNduhz00AaBbhxHtHskpz63q884"
+  }
+}

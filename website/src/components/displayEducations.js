@@ -52,6 +52,18 @@ const useStyles = makeStyles(theme => ({
     backgroundSize: "contain",
     background: "rgb(34,121,0)",
   },
+  education: {
+    marginLeft: "30px",
+    marginRight: "30px",
+    borderRadius: "30px",
+    padding: "20px",
+
+    transition: "0.5s",
+    "&:hover": {
+      transform: "scale(1.2)",
+      background: "rgba(255,255,0, 0.3)",
+    },
+  },
 }))
 
 const DisplayEducation = () => {
@@ -98,7 +110,7 @@ const DisplayEducation = () => {
                       </TimelineSeparator>
                     </Hidden>
                     <TimelineContent>
-                      <Box>
+                      <Box className={classes.education}>
                         <Grid
                           container
                           justify="space-evenly"

@@ -33,6 +33,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       width: "300px",
     },
+    borderRadius: "25px",
   },
 }))
 
