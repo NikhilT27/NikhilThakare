@@ -1,8 +1,4 @@
-[[redirects]]
-from = "/"
-to = "website/"
-
 [build]
-  base    = "/"
+  base    = "website"
   publish = "public/"
   command = "gatsby build"
