@@ -5,4 +5,4 @@ to = "website/"
 [build]
   base    = "website"
   publish = "website/public/"
-  command = "gatsby build"
+  command = "yarn build"
