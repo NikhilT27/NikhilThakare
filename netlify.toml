@@ -1,3 +1,3 @@
-  base    = "NikhilThakare/website"
-  publish = "NikhilThakare/website/public/"
+  base    = "website"
+  publish = "website/public/"
   command = "yarn build"
