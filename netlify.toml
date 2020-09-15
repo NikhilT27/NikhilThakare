@@ -3,6 +3,6 @@ from = "/"
 to = "website/"
 
 [build]
-  base    = "subdirectory"
-  publish = "subdirectory/public/"
+  base    = "website"
+  publish = "website/public/"
   command = "gatsby build"
