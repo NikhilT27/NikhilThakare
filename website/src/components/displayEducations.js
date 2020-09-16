@@ -154,7 +154,7 @@ const DisplayEducation = () => {
             </Box>
             <Box
               display={{ xs: "inline", md: "none" }}
-              style={{ paddingLeft: "10px", paddingRight: "10px" }}
+              style={{ paddingLeft: "20px", paddingRight: "20px" }}
             >
               {data.allStrapiEducations.nodes.map(item => {
                 return (

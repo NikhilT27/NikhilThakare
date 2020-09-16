@@ -85,6 +85,10 @@ const useStyles = makeStyles(theme => ({
       transform: "scale(1.2)",
     },
   },
+  tagline: {
+    paddingLeft: "20px",
+    paddingRight: "20px",
+  },
 }))
 
 const DisplaySkills = () => {
@@ -127,7 +131,7 @@ const DisplaySkills = () => {
           </Typography>
         </Grid>
         <Grid item>
-          <Typography variant="h6">
+          <Typography variant="h6" className={classes.tagline}>
             ""Every artist was first an amateur""
           </Typography>
         </Grid>
