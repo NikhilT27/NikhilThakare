@@ -19,6 +19,7 @@ function SEO({ description, lang, meta, title }) {
             title
             description
             author
+            website
           }
         }
       }
@@ -26,6 +27,7 @@ function SEO({ description, lang, meta, title }) {
   )
 
   const metaDescription = description || site.siteMetadata.description
+  const website = site.siteMetadata.website
 
   return (
     <Helmet
@@ -49,7 +51,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           property: `og:type`,
-          content: `website`,
+          content: website,
         },
         {
           name: `twitter:card`,
@@ -68,7 +70,9 @@ function SEO({ description, lang, meta, title }) {
           content: metaDescription,
         },
       ].concat(meta)}
-    />
+    >
+      <link rel="canonical" href={website} />
+    </Helmet>
   )
 }
 
