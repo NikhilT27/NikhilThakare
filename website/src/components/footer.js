@@ -45,7 +45,7 @@ const Footer = () => {
     }
   `)
   return (
-    <Paper className={classes.root}>
+    <Paper id="Footer" className={classes.root}>
       <Grid container direction="column" justify="center" alignItems="center">
         <Typography variant="body2">
           Made with <FavoriteBorderIcon style={{ color: "red" }} />

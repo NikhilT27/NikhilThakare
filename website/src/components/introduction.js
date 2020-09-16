@@ -94,7 +94,7 @@ const Introduction = () => {
         fluid={data.backgroundImage.childImageSharp.fluid}
         backgroundColor={`#040e18`}
       >
-        <Paper elevation={0} className={classes.root}>
+        <Paper elevation={0} className={classes.root} id="Introduction">
           <Grid
             container
             justify="space-evenly"

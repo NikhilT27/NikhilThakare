@@ -48,7 +48,7 @@ const DisplayAwards = () => {
   `)
 
   return (
-    <Paper elevation={0} className={classes.root} square>
+    <Paper id="Achievements" elevation={0} className={classes.root} square>
       <Grid container direction="column" justify="center" alignItems="center">
         <Box>
           <Typography variant="h4">My Achievement</Typography>

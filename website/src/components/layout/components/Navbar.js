@@ -10,6 +10,7 @@ import {
   Toolbar,
   Typography,
   Button,
+  Hidden,
 } from "@material-ui/core"
 import { Link, useStaticQuery, graphql } from "gatsby"
 
@@ -78,12 +79,21 @@ export const Navbar = () => {
               </Link>
             </Box>
 
-            <Box
-              display={{ xs: "none", sm: "block" }}
-              style={{ display: "flex", alignItems: "flex-end" }}
-            >
+            <Box style={{ display: "flex", alignItems: "flex-end" }}>
+              <Hidden xsDown>
+                <Button color="inherit">
+                  <Link to="/#Skills" style={{ textDecoration: "none" }}>
+                    <Typography className={classes.title}> Skills</Typography>
+                  </Link>
+                </Button>
+                <Button color="inherit">
+                  <Link to="/#Projects" style={{ textDecoration: "none" }}>
+                    <Typography className={classes.title}> Projects</Typography>
+                  </Link>
+                </Button>
+              </Hidden>
               <Button color="inherit">
-                <Link to="/drawings" style={{ textDecoration: "none" }}>
+                <Link to="/Art" style={{ textDecoration: "none" }}>
                   <Typography className={classes.title}> Art</Typography>
                 </Link>
               </Button>

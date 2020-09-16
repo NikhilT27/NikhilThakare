@@ -71,7 +71,7 @@ const Projects = () => {
     }
   `)
   return (
-    <Paper elevation={0} className={classes.root} square>
+    <Paper id="Projects" elevation={0} className={classes.root} square>
       <Grid container direction="column" justify="space-evenly" align="center">
         <Typography variant="h4">Projects</Typography>
         <Typography variant="body1">""Few projects by me...""</Typography>

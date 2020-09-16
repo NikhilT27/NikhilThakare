@@ -1,9 +1,11 @@
 module.exports = {
   siteMetadata: {
     title: `Nikhil Thakare`,
-    description: `My Portfolio`,
+    description: `Nikhil Thakare's Portfolio website`,
     author: `@NikhilT27`,
-    website: `nikhilthakare.netlify.com`,
+    twitterUsername: "@nikhilt22781479",
+    image: "/src/images/twitter-img.png",
+    website: `https://nikhilthakare.netlify.app`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

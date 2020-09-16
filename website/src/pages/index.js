@@ -5,7 +5,6 @@ import Layout from "../components/layout"
 import Introduction from "../components/introduction"
 import DisplaySkills from "../components/displaySkills"
 import DisplayEducations from "../components/displayEducations"
-import DisplayMystories from "../components/displayMystories"
 import DisplayMyAwards from "../components/displayAwards"
 import Projects from "../components/projects"
 import Experiences from "../components/experiences"
@@ -18,7 +17,7 @@ const IndexPage = () => {
     <React.Fragment>
       <CssBaseline />
       <Layout>
-        <SEO title="Home" />
+        <SEO title="Home" description="Welcome to Nikhil's portfolio" />
         {/* <Spring /> */}
         <Introduction />
         <DisplayEducations />
@@ -26,7 +25,6 @@ const IndexPage = () => {
         <Experiences />
         <Projects />
         <DisplayMyAwards />
-        {/* <DisplayMystories /> */}
         <Footer />
       </Layout>
       <SocialMedia />

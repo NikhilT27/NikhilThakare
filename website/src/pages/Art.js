@@ -65,7 +65,7 @@ const Drawings = () => {
     <>
       <CssBaseline />
       <Layout>
-        <SEO title="Drawings" />
+        <SEO title="Art" description="Welcome to Nikhil's Art Section" />
         <Box className={classes.root}>
           <Box display={{ xs: "none", sm: "inline" }}>
             <Typography variant="h1">Hi </Typography>

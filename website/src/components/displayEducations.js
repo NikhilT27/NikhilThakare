@@ -94,7 +94,7 @@ const DisplayEducation = () => {
   `)
 
   return (
-    <Paper elevation={0} className={classes.root} square>
+    <Paper id="Educations" elevation={0} className={classes.root} square>
       <Grid container direction="column" justify="space-evenly" align="center">
         <Grid item>
           <Grid container direction="column">
