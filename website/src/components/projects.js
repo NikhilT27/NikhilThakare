@@ -78,7 +78,7 @@ const Projects = () => {
         {data.allStrapiProjects.nodes.map(item => {
           count++
           return (
-            <Box style={{ paddingTop: 50 }}>
+            <Box style={{ padding: 50 }}>
               <Box display={{ xs: "inline", sm: "none" }}>
                 <Grid container justify="center" alignItems="center">
                   <Box className={classes.image}>

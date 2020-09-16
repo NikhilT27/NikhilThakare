@@ -10,7 +10,7 @@ import DisplayMyAwards from "../components/displayAwards"
 import Projects from "../components/projects"
 import Experiences from "../components/experiences"
 import Footer from "../components/footer"
-
+import SocialMedia from "../components/socialMedia"
 import SEO from "../components/seo"
 
 const IndexPage = () => {
@@ -29,6 +29,7 @@ const IndexPage = () => {
         {/* <DisplayMystories /> */}
         <Footer />
       </Layout>
+      <SocialMedia />
     </React.Fragment>
   )
 }

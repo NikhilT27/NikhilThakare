@@ -1,8 +1,16 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
-import { Grid, Paper, Typography, Box, Hidden } from "@material-ui/core"
+import {
+  Grid,
+  Paper,
+  Typography,
+  Box,
+  Hidden,
+  Divider,
+} from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
+import SchoolIcon from "@material-ui/icons/School"
 
 import {
   Timeline,
@@ -17,13 +25,7 @@ import BackgroundImage from "gatsby-background-image"
 const useStyles = makeStyles(theme => ({
   root: {
     // backgroundColor: "#fcf7cc",
-    background: "rgb(34,121,0)",
-    background:
-      "-moz-linear-gradient(45deg, rgba(34,121,0,1) 0%, rgba(148,212,0,1) 29%, rgba(234,255,0,1) 100%)",
-    background:
-      "-webkit-linear-gradient(45deg, rgba(34,121,0,1) 0%, rgba(148,212,0,1) 29%, rgba(234,255,0,1) 100%)",
-    background:
-      "linear-gradient(45deg, rgba(34,121,0,1) 0%, rgba(148,212,0,1) 29%, rgba(234,255,0,1) 100%)",
+    background: "#FAFAFA",
 
     paddingTop: 50,
     paddingBottom: 50,
@@ -57,11 +59,14 @@ const useStyles = makeStyles(theme => ({
     marginRight: "30px",
     borderRadius: "30px",
     padding: "20px",
+    color: "black",
+    textTransform: "uppercase",
 
     transition: "0.5s",
     "&:hover": {
       transform: "scale(1.2)",
-      background: "rgba(0,0,0, 0.1)",
+      // background: "rgba(0,0,0, 0.1)",
+      // borderStyle: "solid",
     },
   },
 }))
@@ -98,51 +103,88 @@ const DisplayEducation = () => {
         </Grid>
         <Grid item>
           <Grid>
-            <Timeline align="alternate" className={classes.timeline}>
-              {data.allStrapiEducations.nodes.map(item => {
-                return (
-                  <TimelineItem>
-                    <Hidden xsDown>
+            <Box display={{ xs: "none", md: "inline" }}>
+              <Timeline align="alternate" className={classes.timeline}>
+                {data.allStrapiEducations.nodes.map(item => {
+                  return (
+                    <TimelineItem>
                       <TimelineSeparator>
                         <TimelineConnector color="secondary" />
-                        <TimelineDot color="secondary" />
+                        <TimelineDot color="secondary">
+                          <SchoolIcon style={{ fontSize: "30px" }} />
+                        </TimelineDot>
                         <TimelineConnector color="secondary" />
                       </TimelineSeparator>
-                    </Hidden>
-                    <TimelineContent>
-                      <Box className={classes.education}>
-                        <Grid
-                          container
-                          justify="space-evenly"
-                          alignItems="center"
-                        >
-                          <Grid item>
-                            <Grid
-                              container
-                              direction="column"
-                              justify="center"
-                              alignItems="center"
-                            >
-                              <Typography variant="h6">
-                                {item.degree_name}
-                              </Typography>
-                              <Typography
-                                variant="body"
-                                color="textSecondary"
-                                component="p"
+                      <TimelineContent>
+                        <Box className={classes.education}>
+                          <Grid
+                            container
+                            justify="space-evenly"
+                            alignItems="center"
+                          >
+                            <Grid item>
+                              <Grid
+                                container
+                                direction="column"
+                                justify="center"
+                                alignItems="center"
                               >
-                                {item.college}
-                              </Typography>
-                              <Typography variant="h6">{item.marks}</Typography>
+                                <Typography variant="h6">
+                                  {item.degree_name}
+                                </Typography>
+                                <Typography
+                                  variant="body"
+                                  color="textSecondary"
+                                  component="p"
+                                >
+                                  {item.college}
+                                </Typography>
+                                <Typography variant="h6">
+                                  {item.marks}
+                                </Typography>
+                              </Grid>
                             </Grid>
                           </Grid>
-                        </Grid>
-                      </Box>
-                    </TimelineContent>
-                  </TimelineItem>
+                        </Box>
+                      </TimelineContent>
+                    </TimelineItem>
+                  )
+                })}
+              </Timeline>
+            </Box>
+            <Box
+              display={{ xs: "inline", md: "none" }}
+              style={{ paddingLeft: "10px", paddingRight: "10px" }}
+            >
+              {data.allStrapiEducations.nodes.map(item => {
+                return (
+                  <Box style={{ paddingTop: "20px", paddingBottom: "20px" }}>
+                    <Grid container justify="space-around" alignItems="center">
+                      <Grid item>
+                        <Box>
+                          <SchoolIcon style={{ fontSize: 60 }} />
+                        </Box>
+                      </Grid>
+                      <Grid item>
+                        <Box style={{ width: "300px" }}>
+                          <Typography variant="h6">
+                            {item.degree_name}
+                          </Typography>
+                          <Typography
+                            variant="body"
+                            color="textSecondary"
+                            component="p"
+                          >
+                            {item.college}
+                          </Typography>
+                          <Typography variant="h6">{item.marks}</Typography>
+                        </Box>
+                      </Grid>
+                    </Grid>
+                  </Box>
                 )
               })}
-            </Timeline>
+            </Box>
           </Grid>
         </Grid>
       </Grid>

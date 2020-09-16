@@ -4,6 +4,14 @@ const themeName = "Nikhil Theme"
 
 export default createMuiTheme({
   themeName,
+  palette: {
+    primary: {
+      main: "#000000",
+    },
+    secondary: {
+      main: "#fc0000 ",
+    },
+  },
   typography: {
     fontFamily: ["'Poppins', sans-serif"].join(","),
     h4: {

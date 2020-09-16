@@ -10,14 +10,8 @@ import {
   Toolbar,
   Typography,
   Button,
-  IconButton,
 } from "@material-ui/core"
 import { Link, useStaticQuery, graphql } from "gatsby"
-
-import GitHubIcon from "@material-ui/icons/GitHub"
-import LinkedInIcon from "@material-ui/icons/LinkedIn"
-import InstagramIcon from "@material-ui/icons/Instagram"
-import Fab from "@material-ui/core/Fab"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -93,36 +87,6 @@ export const Navbar = () => {
                   <Typography className={classes.title}> Art</Typography>
                 </Link>
               </Button>
-            </Box>
-          </Grid>
-        </Toolbar>
-        <Toolbar>
-          <Grid direction="column">
-            <Box display={{ xs: "none", sm: "inline" }}>
-              <Grid item>
-                <IconButton
-                  target="_blank"
-                  href="https://www.linkedin.com/in/nikhil-t/"
-                >
-                  <LinkedInIcon />
-                </IconButton>
-              </Grid>
-              <Grid item>
-                <IconButton
-                  target="_blank"
-                  href="https://www.linkedin.com/in/nikhil-t/"
-                >
-                  <GitHubIcon />
-                </IconButton>
-              </Grid>{" "}
-              <Grid item>
-                <IconButton
-                  target="_blank"
-                  href="https://www.linkedin.com/in/nikhil-t/"
-                >
-                  <InstagramIcon />
-                </IconButton>
-              </Grid>
             </Box>
           </Grid>
         </Toolbar>

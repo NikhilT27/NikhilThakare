@@ -29,12 +29,17 @@ const useStyles = makeStyles(theme => ({
   },
   image: {
     width: "700px",
+    margin: "30px",
     marginBottom: `1.45rem`,
     [theme.breakpoints.down("sm")]: {
       width: "300px",
     },
-    borderRadius: "25px",
+    transition: "0.5s",
+    "&:hover": {
+      transform: "scale(1.2)",
+    },
   },
+  all: {},
 }))
 
 const Drawings = () => {
@@ -70,19 +75,21 @@ const Drawings = () => {
             <Typography variant="h4">Hi </Typography>
             <Typography variant="h4">Welcome to my ART section</Typography>
           </Box>
-          <Grid container justify="space-evenly" alignItems="center">
-            {data.allStrapiDrawings.nodes.map(item => {
-              return (
-                <Box id={item.strapiId}>
-                  <Tooltip title={item.name}>
-                    <Box className={classes.image}>
-                      <Img fluid={item.drawing.childImageSharp.fluid} />
-                    </Box>
-                  </Tooltip>
-                </Box>
-              )
-            })}
-          </Grid>
+          <Box className={classes.all}>
+            <Grid container justify="space-evenly" alignItems="center">
+              {data.allStrapiDrawings.nodes.map(item => {
+                return (
+                  <Box id={item.strapiId}>
+                    <Tooltip title={item.name}>
+                      <Box className={classes.image}>
+                        <Img fluid={item.drawing.childImageSharp.fluid} />
+                      </Box>
+                    </Tooltip>
+                  </Box>
+                )
+              })}
+            </Grid>
+          </Box>
 
           <Link to="/">
             <IconButton>

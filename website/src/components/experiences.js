@@ -26,6 +26,7 @@ const useStyles = makeStyles(theme => ({
   },
   content: {
     width: "500px",
+    textTransform: "capitalize",
     [theme.breakpoints.down("sm")]: {
       width: "300px",
     },
@@ -101,7 +102,11 @@ const Experiences = () => {
 
                     {item.detail.map(({ id, data }) => {
                       return (
-                        <Typography id={id} variant="body1">
+                        <Typography
+                          id={id}
+                          variant="body1"
+                          style={{ textTransform: "none" }}
+                        >
                           <ChevronRightIcon style={{ fontSize: 15 }} /> {data}
                         </Typography>
                       )

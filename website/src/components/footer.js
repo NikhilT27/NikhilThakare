@@ -1,6 +1,7 @@
 import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
+import { linkedin, instagram, github } from "./staticData"
 
 import ReactMarkdown from "react-markdown"
 
@@ -60,14 +61,22 @@ const Footer = () => {
             justify="space-between"
             alignItems="center"
           >
-            <IconButton>
-              <GitHubIcon style={{ color: "#fff" }} />
+            <IconButton style={{ color: "#fff" }} target="_blank" href={github}>
+              <GitHubIcon />
             </IconButton>
-            <IconButton>
-              <LinkedInIcon style={{ color: "#fff" }} />
+            <IconButton
+              style={{ color: "#fff" }}
+              target="_blank"
+              href={linkedin}
+            >
+              <LinkedInIcon />
             </IconButton>
-            <IconButton>
-              <InstagramIcon style={{ color: "#fff" }} />
+            <IconButton
+              style={{ color: "#fff" }}
+              target="_blank"
+              href={instagram}
+            >
+              <InstagramIcon />
             </IconButton>
           </Grid>
         </Grid>
