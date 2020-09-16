@@ -127,7 +127,9 @@ const DisplaySkills = () => {
           </Typography>
         </Grid>
         <Grid item>
-          <Typography>Mazhe skills</Typography>
+          <Typography variant="h6">
+            ""Every artist was first an amateur""
+          </Typography>
         </Grid>
 
         <Grid item>

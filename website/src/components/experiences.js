@@ -80,7 +80,10 @@ const Experiences = () => {
       <Grid container direction="column">
         <Grid container direction="column" justify="center" alignItems="center">
           <Typography variant="h4">Experience</Typography>
-          <Typography variant="body1">Description</Typography>
+          <Typography variant="h6">
+            ""When you have really exhausted an experience you always reverence
+            and love it.""
+          </Typography>
         </Grid>
 
         {data.allStrapiExperiences.nodes.map(item => {

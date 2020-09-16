@@ -74,7 +74,7 @@ const Projects = () => {
     <Paper elevation={0} className={classes.root} square>
       <Grid container direction="column" justify="space-evenly" align="center">
         <Typography variant="h4">Projects</Typography>
-        <Typography variant="body1">Description</Typography>
+        <Typography variant="body1">""Few projects by me...""</Typography>
         {data.allStrapiProjects.nodes.map(item => {
           count++
           return (

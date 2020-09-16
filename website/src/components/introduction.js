@@ -4,6 +4,7 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import ReactMarkdown from "react-markdown"
 import Typical from "react-typical"
+import { linkedin, instagram, github } from "./staticData"
 
 import BackgroundImage from "gatsby-background-image"
 import {
@@ -15,6 +16,11 @@ import {
   IconButton,
 } from "@material-ui/core"
 import { useSpring, animated } from "react-spring"
+
+import GitHubIcon from "@material-ui/icons/GitHub"
+import LinkedInIcon from "@material-ui/icons/LinkedIn"
+import InstagramIcon from "@material-ui/icons/Instagram"
+
 import { makeStyles } from "@material-ui/core/styles"
 
 const useStyles = makeStyles(theme => ({
@@ -106,7 +112,24 @@ const Introduction = () => {
                     <Typography variant="h4">
                       निखिल ठाकरे ನಿಖಿಲ್ ಠಾಕರೆ
                     </Typography>
-
+                    <Box display={{ xs: "inline", sm: "none" }}>
+                      <Grid
+                        container
+                        direction="row"
+                        justify="flex-start"
+                        alignItems="center"
+                      >
+                        <IconButton target="_blank" href={github}>
+                          <GitHubIcon />
+                        </IconButton>
+                        <IconButton target="_blank" href={linkedin}>
+                          <LinkedInIcon />
+                        </IconButton>
+                        <IconButton target="_blank" href={instagram}>
+                          <InstagramIcon />
+                        </IconButton>
+                      </Grid>
+                    </Box>
                     <animated.div style={travelFromLeft}>
                       <div>
                         {/* <Typography>
