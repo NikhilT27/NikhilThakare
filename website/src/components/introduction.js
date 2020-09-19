@@ -106,7 +106,7 @@ const Introduction = () => {
               <Grid container direction="column">
                 <animated.div style={nameAnimation}>
                   <div className={classes.title}>
-                    <Typography variant="h3" style={{ fontWeight: "bold" }}>
+                    <Typography variant="h4" style={{ fontWeight: "bold" }}>
                       {data.strapiIntroductions.name}
                     </Typography>
                     <Typography variant="h4">
@@ -135,26 +135,26 @@ const Introduction = () => {
                         {/* <Typography>
                           {data.strapiIntroductions.description}
                         </Typography> */}
-                        <h1>I am </h1>
+
                         <Typical
                           steps={[
-                            "Developer",
+                            "I am Developer",
                             1000,
-                            "Artist",
+                            "I am Artist",
                             1000,
-                            "Critical Thinker",
+                            "I am Critical Thinker",
                             1000,
-                            "Problem Solver",
+                            "I am Problem Solver",
                             1000,
-                            "UI Designer",
+                            "I am UI Designer",
                             1000,
-                            "Graphic Designer",
+                            "I am Graphic Designer",
                             1000,
-                            "Bad Singer",
+                            "I am Bad Singer",
                             1000,
                           ]}
                           loop={Infinity}
-                          wrapper="h1"
+                          wrapper="h4"
                         />
                       </div>
                     </animated.div>

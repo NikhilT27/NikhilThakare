@@ -14,7 +14,6 @@ const useStyles = makeStyles(theme => ({
   root: {
     margin: 0,
 
-    paddingTop: 100,
     paddingBottom: 100,
     paddingLeft: 50,
     paddingRight: 50,
@@ -49,6 +48,8 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     flexGrow: 1,
+    paddingTop: 50,
+
     fontWeight: "bold",
     color: "black",
   },

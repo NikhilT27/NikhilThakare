@@ -132,11 +132,7 @@ const DisplayEducation = () => {
                                 <Typography variant="h6">
                                   {item.degree_name}
                                 </Typography>
-                                <Typography
-                                  variant="body"
-                                  color="textSecondary"
-                                  component="p"
-                                >
+                                <Typography variant="body2">
                                   {item.college}
                                 </Typography>
                                 <Typography variant="h6">
@@ -158,7 +154,14 @@ const DisplayEducation = () => {
             >
               {data.allStrapiEducations.nodes.map(item => {
                 return (
-                  <Box style={{ paddingTop: "20px", paddingBottom: "20px" }}>
+                  <Box
+                    style={{
+                      paddingTop: "20px",
+                      paddingBottom: "20px",
+                      paddingLeft: "10px",
+                      paddingRight: "10px",
+                    }}
+                  >
                     <Grid container justify="space-around" alignItems="center">
                       <Grid item>
                         <Box>
@@ -170,11 +173,7 @@ const DisplayEducation = () => {
                           <Typography variant="h6">
                             {item.degree_name}
                           </Typography>
-                          <Typography
-                            variant="body"
-                            color="textSecondary"
-                            component="p"
-                          >
+                          <Typography variant="body1">
                             {item.college}
                           </Typography>
                           <Typography variant="h6">{item.marks}</Typography>

@@ -1,5 +1,7 @@
 import { createMuiTheme } from "@material-ui/core/styles"
 
+const theme = createMuiTheme()
+
 const themeName = "Nikhil Theme"
 
 export default createMuiTheme({
@@ -16,16 +18,35 @@ export default createMuiTheme({
     fontFamily: ["'Poppins', sans-serif"].join(","),
     h4: {
       fontWeight: 700,
+      [theme.breakpoints.down("xs")]: {
+        fontSize: "22px",
+      },
     },
     h5: {
       fontWeight: 700,
+      [theme.breakpoints.down("xs")]: {
+        fontSize: "21px",
+      },
+    },
+
+    h6: {
+      fontWeight: 700,
+      [theme.breakpoints.down("xs")]: {
+        fontSize: "17px",
+      },
     },
 
     body2: {
       fontWeight: 700,
+      [theme.breakpoints.down("xs")]: {
+        fontSize: "16px",
+      },
     },
     body1: {
       fontSize: 17,
+      [theme.breakpoints.down("xs")]: {
+        fontSize: "16px",
+      },
     },
   },
 })

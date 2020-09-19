@@ -84,7 +84,7 @@ const Experiences = () => {
       <Grid container direction="column">
         <Grid container direction="column" justify="center" alignItems="center">
           <Typography variant="h4">Experience</Typography>
-          <Typography variant="h6" className={classes.tagline}>
+          <Typography variant="body1" className={classes.tagline}>
             ""When you have really exhausted an experience you always reverence
             and love it.""
           </Typography>
