@@ -47,6 +47,10 @@ function SEO({ description, lang, meta, title }) {
           content: title,
         },
         {
+          name: `og:image`,
+          content: `//res.cloudinary.com/gafrfdasdx/image/upload/v1600198516/small_Screenshot_from_2020_09_11_03_23_20_a75b8f5754.png`,
+        },
+        {
           property: `og:description`,
           content: metaDescription,
         },
@@ -72,7 +76,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           name: `twitter:image`,
-          content: `${website}${image}`,
+          content: `//res.cloudinary.com/gafrfdasdx/image/upload/v1600198516/small_Screenshot_from_2020_09_11_03_23_20_a75b8f5754.png`,
         },
       ].concat(meta)}
     >
