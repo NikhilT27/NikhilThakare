@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
     background: "#fff",
   },
   image: {
-    width: "700px",
+    width: "500px",
     margin: "30px",
     marginBottom: `1.45rem`,
     [theme.breakpoints.down("sm")]: {

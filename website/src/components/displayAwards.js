@@ -9,8 +9,11 @@ const useStyles = makeStyles(theme => ({
   root: {
     paddingTop: 100,
     paddingBottom: 100,
-
     backgroundColor: "gold",
+    [theme.breakpoints.down("xs")]: {
+      paddingTop: 30,
+      paddingBottom: 30,
+    },
   },
   image: {
     width: "400px",
@@ -20,6 +23,8 @@ const useStyles = makeStyles(theme => ({
   },
   content: {
     width: "500px",
+    paddingTop: "30px",
+    paddingBottom: "30px",
     [theme.breakpoints.down("sm")]: {
       width: "300px",
     },

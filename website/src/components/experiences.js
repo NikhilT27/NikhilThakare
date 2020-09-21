@@ -22,13 +22,14 @@ const useStyles = makeStyles(theme => ({
     paddingBottom: 50,
   },
   image: {
-    width: "200px",
+    width: "300px",
   },
   content: {
-    width: "500px",
+    width: "40%",
+    paddingTop: "30px",
     textTransform: "capitalize",
-    [theme.breakpoints.down("sm")]: {
-      width: "300px",
+    [theme.breakpoints.down("xs")]: {
+      width: "80%",
     },
   },
   backg: {

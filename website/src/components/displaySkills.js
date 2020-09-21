@@ -28,21 +28,21 @@ const useStyles = makeStyles(theme => ({
     // background: "transparent",
   },
   skillBox: {
-    minWidth: "500px",
+    minWidth: "60%",
     margin: 20,
     [theme.breakpoints.down("xs")]: {
-      minWidth: "300px",
+      minWidth: "90%",
       margin: 10,
     },
   },
   contentBox: {
-    maxWidth: "500px",
+    maxWidth: "60%",
     margin: 20,
     [theme.breakpoints.down("md")]: {
-      maxWidth: "400px",
+      maxWidth: "70%",
     },
     [theme.breakpoints.down("sm")]: {
-      maxWidth: "300px",
+      maxWidth: "90%",
       margin: 10,
     },
   },
@@ -132,7 +132,11 @@ const DisplaySkills = () => {
           </Typography>
         </Grid>
         <Grid item>
-          <Typography variant="h6" className={classes.tagline}>
+          <Typography
+            variant="h6"
+            className={classes.tagline}
+            style={{ textAlign: "center" }}
+          >
             ""Every artist was first an amateur""
           </Typography>
         </Grid>

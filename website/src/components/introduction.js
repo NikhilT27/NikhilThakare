@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
       paddingTop: 50,
     },
     paddingBottom: 50,
-    // background: "#D8D8D8",
+
     background: "transparent",
   },
   title: {

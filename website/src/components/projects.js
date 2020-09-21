@@ -24,6 +24,10 @@ const useStyles = makeStyles(theme => ({
     paddingTop: 100,
     paddingBottom: 100,
     background: "gold",
+    [theme.breakpoints.down("xs")]: {
+      paddingTop: 30,
+      paddingBottom: 30,
+    },
   },
   image: {
     width: "400px",
