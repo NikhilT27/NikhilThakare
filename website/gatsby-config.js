@@ -52,7 +52,7 @@ module.exports = {
           "Projects",
           "Skills",
         ],
-        queryLimit: 1000,
+        queryLimit: 5000,
       },
     },
 

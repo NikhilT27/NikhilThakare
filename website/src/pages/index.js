@@ -3,6 +3,7 @@ import React from "react"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import Layout from "../components/layout"
 import Introduction from "../components/introduction"
+import About from "../components/about"
 import DisplaySkills from "../components/displaySkills"
 import DisplayEducations from "../components/displayEducations"
 import DisplayMyAwards from "../components/displayAwards"
@@ -22,6 +23,7 @@ const IndexPage = () => {
         <SEO title="Home" description="Welcome to Nikhil's portfolio" />
         {/* <Spring /> */}
         <Introduction />
+        <About />
         <DisplayEducations />
         <DisplaySkills />
         <Experiences />

@@ -97,7 +97,7 @@ const DisplaySkills = () => {
 
   const data = useStaticQuery(graphql`
     {
-      allStrapiSkills {
+      allStrapiSkills(sort: { fields: strapiId, order: DESC }) {
         nodes {
           strapiId
           title
