@@ -24,8 +24,8 @@ module.exports = {
         name: `nikhil-thakare-portfolio`,
         short_name: `portfolio`,
         start_url: `/`,
-        background_color: `#ffea00`,
-        theme_color: `#ffea00`,
+        background_color: `#FFD700`,
+        theme_color: `#FFD700`,
         display: `minimal-ui`,
         icon: `src/images/logo.png`, // This path is relative to the root of the site.
       },
@@ -42,8 +42,8 @@ module.exports = {
     {
       resolve: "gatsby-source-strapi",
       options: {
-        apiURL: "https://strapi-mongodb-2712.herokuapp.com",
-        // apiURL: "http://localhost:1337",
+        // apiURL: "https://strapi-mongodb-2712.herokuapp.com",
+        apiURL: "http://localhost:1337",
         contentTypes: [
           "Awards",
           "Drawings",
