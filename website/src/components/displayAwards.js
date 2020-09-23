@@ -8,11 +8,12 @@ import { makeStyles } from "@material-ui/core/styles"
 const useStyles = makeStyles(theme => ({
   root: {
     paddingTop: 100,
-    paddingBottom: 100,
+    marginBottom: "-0.5rem",
+    // paddingBottom: 100,
     backgroundColor: "gold",
     [theme.breakpoints.down("xs")]: {
       paddingTop: 30,
-      paddingBottom: 30,
+      // paddingBottom: 30,
     },
   },
   image: {
@@ -77,6 +78,13 @@ const DisplayAwards = () => {
           </Grid>
         </Box>
       </Grid>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path
+          fill="#040e18"
+          fill-opacity="1"
+          d="M0,128L120,154.7C240,181,480,235,720,245.3C960,256,1200,224,1320,208L1440,192L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"
+        ></path>
+      </svg>
     </Paper>
   )
 }

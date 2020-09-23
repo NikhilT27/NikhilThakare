@@ -27,10 +27,10 @@ const useStyles = makeStyles(theme => ({
     // backgroundColor: "#fcf7cc",
     background: "#FAFAFA",
 
-    paddingTop: 50,
+    // paddingTop: 50,
     paddingBottom: 50,
     [theme.breakpoints.down("sm")]: {
-      paddingTop: 20,
+      // paddingTop: 20,
       paddingBottom: 20,
     },
   },
@@ -95,6 +95,19 @@ const DisplayEducation = () => {
 
   return (
     <Paper id="Educations" elevation={0} className={classes.root} square>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path
+          fill="#e8e1d5"
+          fill-opacity="1"
+          d="M0,128L288,96L576,96L864,192L1152,224L1440,64L1440,0L1152,0L864,0L576,0L288,0L0,0Z"
+        ></path>
+
+        <path
+          fill="#1c1100"
+          fill-opacity="1"
+          d="M0,32L80,42.7C160,53,320,75,480,96C640,117,800,139,960,122.7C1120,107,1280,53,1360,26.7L1440,0L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"
+        ></path>
+      </svg>
       <Grid container direction="column" justify="space-evenly" align="center">
         <Grid item>
           <Grid container direction="column">
@@ -187,6 +200,18 @@ const DisplayEducation = () => {
           </Grid>
         </Grid>
       </Grid>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path
+          fill="#e8e1d5"
+          fill-opacity="1"
+          d="M0,128L288,96L576,96L864,192L1152,224L1440,64L1440,320L1152,320L864,320L576,320L288,320L0,320Z"
+        ></path>
+        <path
+          fill="#fc0000"
+          fill-opacity="1"
+          d="M0,320L720,224L1440,256L1440,320L720,320L0,320Z"
+        ></path>
+      </svg>
     </Paper>
   )
 }

@@ -25,13 +25,10 @@ import { makeStyles } from "@material-ui/core/styles"
 
 const useStyles = makeStyles(theme => ({
   root: {
-    margin: 0,
     paddingTop: 100,
     [theme.breakpoints.down("sm")]: {
       paddingTop: 50,
     },
-    paddingBottom: 50,
-
     background: "transparent",
   },
   title: {

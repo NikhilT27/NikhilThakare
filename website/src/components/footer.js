@@ -24,7 +24,7 @@ import { makeStyles } from "@material-ui/core/styles"
 const useStyles = makeStyles(theme => ({
   root: {
     margin: 0,
-    paddingTop: 30,
+    // paddingTop: 30,
     paddingBottom: 30,
     color: "white",
     background: "#040e18",
@@ -45,14 +45,14 @@ const Footer = () => {
     }
   `)
   return (
-    <Paper id="Footer" className={classes.root}>
+    <Paper id="Footer" elevation={0} className={classes.root}>
       <Grid container direction="column" justify="center" alignItems="center">
         <Typography variant="body2">
           Made with <FavoriteBorderIcon style={{ color: "red" }} />
         </Typography>
         <div style={{ width: "80px" }}>
           <Img fluid={data.logo_white.childImageSharp.fluid} />
-        </div>{" "}
+        </div>
         <Typography variant="body1">nikhilthakare14@gmail.com</Typography>
         <Grid item>
           <Grid

@@ -13,11 +13,9 @@ import Tooltip from "@material-ui/core/Tooltip"
 const useStyles = makeStyles(theme => ({
   root: {
     margin: 0,
-
     paddingBottom: 100,
     paddingLeft: 50,
     paddingRight: 50,
-
     [theme.breakpoints.down("sm")]: {
       paddingTop: 20,
       paddingBottom: 20,
@@ -27,6 +25,7 @@ const useStyles = makeStyles(theme => ({
     background: "white",
     // background: "transparent",
   },
+  mainBox: {},
   skillBox: {
     minWidth: "60%",
     margin: 20,
@@ -124,77 +123,88 @@ const DisplaySkills = () => {
   `)
 
   return (
-    <Paper id="Skills" elevation={0} className={classes.root} square>
-      <Grid container direction="column" justify="center" alignItems="center">
-        <Grid item>
-          <Typography variant="h4" className={classes.title}>
-            Skills
-          </Typography>
-        </Grid>
-        <Grid item>
-          <Typography
-            variant="h6"
-            className={classes.tagline}
-            style={{ textAlign: "center" }}
+    <>
+      <Paper id="Skills" elevation={0} className={classes.root} square>
+        <Box className={classes.mainBox}>
+          <Grid
+            container
+            direction="column"
+            justify="center"
+            alignItems="center"
           >
-            ""Every artist was first an amateur""
-          </Typography>
-        </Grid>
-
-        <Grid item>
-          <Box className={classes.skillMainBox}>
-            {data.allStrapiSkills.nodes.map(item => {
-              return (
-                <Box className={classes.eachSkill}>
-                  <Grid id={item.strapiId} className={classes.skillBox}>
-                    <div>
-                      <LinearProgress
-                        variant="determinate"
-                        value={item.percentage}
-                        color="secondary"
-                      />
-                    </div>
-                  </Grid>
-                  <Grid container justify="space-between">
-                    <div>
-                      <Grid container>
-                        {item.type === "design" ? (
-                          <BrushIcon />
-                        ) : (
-                          <KeyboardIcon />
-                        )}
-
-                        <Typography variant="body1">{item.title}</Typography>
-                      </Grid>
-                    </div>
-                    <div>
-                      <Typography variant="body1">
-                        {item.percentage} %
-                      </Typography>
-                    </div>
-                  </Grid>
-                </Box>
-              )
-            })}
-          </Box>
-        </Grid>
-
-        <Box>
-          <Tooltip
-            title={
-              <Typography variant="body1">
-                One of my Drawings, for more do check ART section
+            <Grid item>
+              <Typography variant="h4" className={classes.title}>
+                Skills
               </Typography>
-            }
-            arrow
-          >
-            <Box className={classes.image}>
-              <Img fluid={data.skillImage.childImageSharp.fluid} />
+            </Grid>
+            <Grid item>
+              <Typography
+                variant="h6"
+                className={classes.tagline}
+                style={{ textAlign: "center" }}
+              >
+                ""Every artist was first an amateur""
+              </Typography>
+            </Grid>
+
+            <Grid item>
+              <Box className={classes.skillMainBox}>
+                {data.allStrapiSkills.nodes.map(item => {
+                  return (
+                    <Box className={classes.eachSkill}>
+                      <Grid id={item.strapiId} className={classes.skillBox}>
+                        <div>
+                          <LinearProgress
+                            variant="determinate"
+                            value={item.percentage}
+                            color="secondary"
+                          />
+                        </div>
+                      </Grid>
+                      <Grid container justify="space-between">
+                        <div>
+                          <Grid container>
+                            {item.type === "design" ? (
+                              <BrushIcon />
+                            ) : (
+                              <KeyboardIcon />
+                            )}
+
+                            <Typography variant="body1">
+                              {item.title}
+                            </Typography>
+                          </Grid>
+                        </div>
+                        <div>
+                          <Typography variant="body1">
+                            {item.percentage} %
+                          </Typography>
+                        </div>
+                      </Grid>
+                    </Box>
+                  )
+                })}
+              </Box>
+            </Grid>
+
+            <Box>
+              <Tooltip
+                title={
+                  <Typography variant="body1">
+                    One of my Drawings, for more do check ART section
+                  </Typography>
+                }
+                arrow
+              >
+                <Box className={classes.image}>
+                  <Img fluid={data.skillImage.childImageSharp.fluid} />
+                </Box>
+              </Tooltip>
             </Box>
-          </Tooltip>
+          </Grid>
         </Box>
-      </Grid>
-    </Paper>
+      </Paper>
+    </>
   )
 }
 
