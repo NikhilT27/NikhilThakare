@@ -42,8 +42,8 @@ module.exports = {
     {
       resolve: "gatsby-source-strapi",
       options: {
-        // apiURL: "https://strapi-mongodb-2712.herokuapp.com",
-        apiURL: "http://localhost:1337",
+        apiURL: "https://strapi-mongodb-2712.herokuapp.com",
+        // apiURL: "http://localhost:1337",
         contentTypes: [
           "Awards",
           "Drawings",
